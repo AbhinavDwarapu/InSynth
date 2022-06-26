@@ -83,7 +83,7 @@ export default function Chorus({ synth }) {
         </SliderTrack>
         <SliderThumb />
       </Slider>
-      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={2} step={0.1} onChange={handleDepth}>
+      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={1} step={0.1} onChange={handleDepth}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

@@ -28,7 +28,7 @@ Distortion;
 
 Reverb;
 
-Filter;
+BiquadFilter;
 
 Compressor;
 
@@ -237,12 +237,12 @@ setReverbEffect(wet, decay) {
 }
 
 // Set filter effect
-setFilterEffect(wet, frequency, type, rolloff) {
-  if (this.Filter != null) {
-    this.Filter.dispose();
+setBiquadFilterEffect(wet, frequency, type) {
+  if (this.BiquadFilter != null) {
+    this.BiquadFilter.dispose();
   }
-  this.Filter = new Tone.Filter(frequency, type, rolloff).toDestination();
-  this.Filter.set({
+  this.BiquadFilter = new Tone.BiquadFilter(frequency, type).toDestination();
+  this.BiquadFilter.set({
     wet,
   });
 }
@@ -266,23 +266,20 @@ effectInit() {
   this.setChorusEffect(0, 0, 0, 0);
   this.setDistortionEffect(0);
   this.setReverbEffect(0, 0.1);
-  this.setFilterEffect(0);
+  this.setBiquadFilterEffect(0);
   this.setCompressorEffect(0);
   this.chainEffects();
 }
 
 // Chain effects to Tone.Destination
-chainEffects(compress) {
+chainEffects() {
   this.synth.chain(
     this.BitCrusher,
     this.Chorus,
     this.Distortion,
     this.Reverb,
-    this.Filter,
-    () => {
-      if (compress) return this.Compressor;
-      return null;
-    },
+    this.BiquadFilter,
+    // this.Compressor,
     Tone.Destination,
   );
 }

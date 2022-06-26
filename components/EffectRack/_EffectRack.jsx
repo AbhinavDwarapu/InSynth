@@ -7,7 +7,7 @@ import BitCrusher from './BitCrusher';
 import Chorus from './Chorus';
 import Compressor from './Compressor';
 import Distortion from './Distortion';
-import Filter from './Filter';
+import BiquadFilter from './BiquadFilter';
 import Reverb from './Reverb';
 
 export default function EffectRack({ synth }) {
@@ -28,7 +28,7 @@ export default function EffectRack({ synth }) {
           <Distortion synth={synth} />
         </GridItem>
         <GridItem>
-          <Filter synth={synth} />
+          <BiquadFilter synth={synth} />
         </GridItem>
         <GridItem>
           <Reverb synth={synth} />
