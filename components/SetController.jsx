@@ -16,7 +16,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
   });
 
   function changeInput(e) {
-    setInput(e.target.value);
+    setInput((e.target.value).toString());
   }
   function changeChannel(e) {
     setChannel(e);
@@ -24,8 +24,8 @@ export default function SetController({ setInput, setChannel, inputList }) {
 
   return (
     <Box>
-      <h1>Synth Selector</h1>
-      <Select onInput={changeInput}>
+      <h1>Set Controller</h1>
+      <Select onClick={changeInput} placeholder="Select Controller">
         {jsx}
       </Select>
       <NumberInput

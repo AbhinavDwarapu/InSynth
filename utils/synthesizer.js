@@ -1,14 +1,16 @@
 import * as Tone from 'tone';
-import { WebMidi } from 'webmidi';
+
+// Initialise Synthesizer and set a channel and input for ToneJS
+//
 
 export default class Synthesizer {
 synth;
 
-#controller;
+controller;
 
-#input;
+input;
 
-#channel;
+channel;
 
 attack = 0.05;
 
@@ -33,26 +35,8 @@ BiquadFilter;
 Compressor;
 
 // Sets input and channel and adds listeners to synth
-constructor(input, channel) {
-  WebMidi.enable().then(() => {
-  });
-  this.setInput(input);
-  this.setChannel(channel);
+constructor() {
   this.synthInit();
-}
-
-// Removes current listeners first before re-adding listeners
-reInit(synth) {
-  const noteonCallback = this.getController().channels[this.getChannel()].getListeners('noteon');
-  const noteoffCallback = this.getController().channels[this.getChannel()].getListeners('noteoff');
-  const pitchbendCallback = this.getController().channels[this.getChannel()].getListeners('pitchbend');
-  const controlchangeCallback = this.getController().channels[this.getChannel()].getListeners('controlchange');
-  this.getController().channels[this.getChannel()].removeListener('noteon', noteonCallback[1].callback);
-  this.getController().channels[this.getChannel()].removeListener('noteoff', noteoffCallback[0].callback);
-  this.getController().channels[this.getChannel()].removeListener('pitchbend', pitchbendCallback[1].callback);
-  this.getController().channels[this.getChannel()].removeListener('controlchange', controlchangeCallback[1].callback);
-  this.synthInit(synth);
-  this.synthListeners();
 }
 
 // Create new synth and initialise effects
@@ -76,52 +60,15 @@ synthInit(synthName) {
   this.effectInit();
 }
 
-// Set Input, run set controller for WebMidi
-setInput(input) {
-  this.#input = input;
-  this.setController();
-}
-
-// Get Input
-getInput() {
-  return this.#input;
-}
-
-// Set channel, run set controller for WebMidi
-setChannel(channel) {
-  this.#channel = channel;
-  this.setController();
-}
-
-// Get channel
-getChannel() {
-  return (this.#channel);
-}
-
-// Set controller for WebMidi
-setController() {
-  this.#controller = WebMidi.getInputByName(this.#input);
-}
-
-// Get controller
-getController() {
-  return (this.#controller);
-}
-
-// Add listeners to synth and trigger callbacks
-synthListeners() {
-  this.getController().channels[this.getChannel()].addListener('noteon', (e) => {
-    this.triggerAttackCallback(e);
-  });
-  this.getController().channels[this.getChannel()].addListener('noteoff', (e) => {
-    this.triggerReleaseCallback(e);
-  });
-  this.getController().channels[this.getChannel()].addListener('pitchbend', (e) => {
-    this.setDetuneCallback(e);
-  });
-  this.getController().channels[this.getChannel()].addListener('controlchange', (e) => {
-    this.setVolumeCallback(e);
-  });
+// Create dry effects for chaining
+effectInit() {
+  this.setBitCrusherEffect(0);
+  this.setChorusEffect(0, 0, 0, 0);
+  this.setDistortionEffect(0);
+  this.setReverbEffect(0, 0.01);
+  this.setBiquadFilterEffect(0);
+  this.setCompressorEffect(0);
+  this.chainEffects();
 }
 
 // Trigger synth noteon
@@ -161,26 +108,51 @@ setEffects() {
   this.chainEffects();
 }
 
-// Set attack
-setAttack(attack) {
+// Chain effects to Tone.Destination
+// Compressor has no wet or dry
+chainEffects() {
+  this.synth.chain(
+    this.BitCrusher,
+    this.Chorus,
+    this.Distortion,
+    this.Reverb,
+    this.BiquadFilter,
+    // this.Compressor,
+    Tone.Destination,
+  );
+}
+
+/**
+   * @param {number} attack
+   */
+set attack(attack) {
   this.attack = attack * 2;
   this.setEffects();
 }
 
 // Set decay
-setDecay(decay) {
+/**
+   * @param {number} decay
+   */
+set decay(decay) {
   this.decay = decay * 2;
   this.setEffects();
 }
 
 // Set sustain
-setSustain(sustain) {
+/**
+   * @param {number} sustain
+   */
+set sustain(sustain) {
   this.sustain = sustain;
   this.setEffects();
 }
 
 // Set release
-setRelease(release) {
+/**
+   * @param {number} release
+   */
+set release(release) {
   this.release = release * 20;
   this.setEffects();
 }
@@ -188,7 +160,7 @@ setRelease(release) {
 /*
 FOR ALL EFFECTS
 ---------------
-Dispose when setting effects to prevent overstacking
+Dispose when setting effects to prevent stacking
 */
 
 // Set bit crusher effect,
@@ -219,7 +191,7 @@ setDistortionEffect(wet, value) {
   if (this.Distortion != null) {
     this.Distortion.dispose();
   }
-  this.Distortion = new Tone.Distortion(value).toDestination();
+  this.Distortion = new Tone.Distortion(value);
   this.Distortion.set({
     wet,
   });
@@ -230,7 +202,7 @@ setReverbEffect(wet, decay) {
   if (this.Reverb != null) {
     this.Reverb.dispose();
   }
-  this.Reverb = new Tone.Reverb(decay).toDestination();
+  this.Reverb = new Tone.Reverb(decay);
   this.Reverb.set({
     wet,
   });
@@ -254,33 +226,17 @@ setCompressorEffect(wet, thres, ratio) {
   }
 
   if (wet === 0) {
-    this.Compressor = new Tone.Compressor(-24, 12).toDestination();
+    this.Compressor = new Tone.Compressor(-24, 12);
   } else {
-    this.Compressor = new Tone.Compressor(thres, ratio).toDestination();
+    this.Compressor = new Tone.Compressor(thres, ratio);
   }
 }
 
-// Create dry effects for chaining
-effectInit() {
-  this.setBitCrusherEffect(0);
-  this.setChorusEffect(0, 0, 0, 0);
-  this.setDistortionEffect(0);
-  this.setReverbEffect(0, 0.1);
-  this.setBiquadFilterEffect(0);
-  this.setCompressorEffect(0);
-  this.chainEffects();
-}
-
-// Chain effects to Tone.Destination
-chainEffects() {
-  this.synth.chain(
-    this.BitCrusher,
-    this.Chorus,
-    this.Distortion,
-    this.Reverb,
-    this.BiquadFilter,
-    // this.Compressor,
-    Tone.Destination,
-  );
+// Get controller
+get controller() {
+  if (this.controller === undefined) {
+    return -1;
+  }
+  return (this.controller);
 }
 }

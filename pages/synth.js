@@ -1,7 +1,9 @@
-import SynthContainer from '../components/SynthContainer';
+import { useRef } from 'react';
+import SynthContainer from '../components/_SynthContainer';
 
 export default function SynthPage() {
+  const listenerFailed = useRef();
   return (
-    <SynthContainer />
+    <SynthContainer listenerFailId={listenerFailed} />
   );
 }

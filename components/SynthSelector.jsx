@@ -13,7 +13,7 @@ export default function SynthSelector({
 
   return (
     <Box>
-      <h1>Set Controller</h1>
+      <h1>Synth Selector</h1>
       <Select onInput={changeSynth}>
         <option>AMSynth</option>
         <option>FMSynth</option>
