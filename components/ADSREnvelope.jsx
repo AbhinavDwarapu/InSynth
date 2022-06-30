@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-no-bind */
 import {
   Box,
@@ -10,16 +11,16 @@ import {
 
 export default function ADSREnvelope({ synth }) {
   function getAttack(e) {
-    synth.setAttack((e / 100).toFixed(2));
+    synth.attack = (e / 100).toFixed(2);
   }
   function getDecay(e) {
-    synth.setDecay((e / 100).toFixed(2));
+    synth.decay = (e / 100).toFixed(2);
   }
   function getSustain(e) {
-    synth.setSustain((e / 100).toFixed(2));
+    synth.sustain = (e / 100).toFixed(2);
   }
   function getRelease(e) {
-    synth.setRelease((e / 100).toFixed(2));
+    synth.release = (e / 100).toFixed(2);
   }
 
   return (
