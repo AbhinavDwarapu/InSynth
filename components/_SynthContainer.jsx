@@ -2,14 +2,8 @@ import {
   Grid,
   GridItem,
   Skeleton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
   useToast,
+  Square,
 } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
@@ -26,7 +20,6 @@ import Synthesizer from '../utils/synthesizer';
 export default function SynthContainer({ listenerFailId }) {
   const lFailId = listenerFailId;
   const toast = useToast();
-  const { onClose } = useDisclosure();
   const [isLoading, setLoading] = useState(false);
   const [notePlayed, setNote] = useState('N/A');
   const [pitchBend, setPitchBend] = useState(0);
@@ -56,7 +49,7 @@ export default function SynthContainer({ listenerFailId }) {
       WebSynth.controller = controller;
       // No controllers
       if (list.length === 0) {
-        setEmptyList(true);
+        setListenerFailed(true);
         console.log('No controllers detected');
         return;
       }
@@ -129,47 +122,62 @@ export default function SynthContainer({ listenerFailId }) {
   }
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(4, 1fr)" gap={4} m={4}>
-      <GridItem bg="tomato">
-        <DataPanel
-          note={notePlayed}
-          pitchbend={pitchBend}
-          encoder={encoder}
-          midiData={midiData}
-        />
-      </GridItem>
-      <GridItem bg="papayawhip">
-        <SynthSelector
-          synth={synth}
-        />
-      </GridItem>
-      <GridItem bg="tomato" rowSpan={4} colSpan={1}>
-        <EffectRack
-          synth={synth}
-        />
-      </GridItem>
-      <GridItem bg="papayawhip">
-        <SetController
-          inputList={inputList}
-          input={input}
-          channel={channel}
-          setInput={setInput}
-          setChannel={setChannel}
-        />
-      </GridItem>
-      <GridItem bg="tomato">
-        <ADSREnvelope
-          synth={synth}
-        />
-      </GridItem>
-      <GridItem bg="papayawhip" colSpan={2} rowSpan={2}>
-        <Graph
-          synth={synth}
-          setSynth={setSynth}
-        />
-      </GridItem>
+    <Square
+      justifyContent="center"
+      alignItems="center"
+      height="100vh"
+      minW={840}
+      minH={800}
 
-    </Grid>
+    >
+      <Grid
+        templateColumns="repeat(3, 1fr)"
+        templateRows="repeat(3, 1fr)"
+        gap={4}
+        m={4}
+
+      >
+        <GridItem bg="tomato">
+          <DataPanel
+            note={notePlayed}
+            pitchbend={pitchBend}
+            encoder={encoder}
+            midiData={midiData}
+          />
+        </GridItem>
+        <GridItem bg="papayawhip">
+          <SynthSelector
+            synth={synth}
+          />
+        </GridItem>
+        <GridItem bg="tomato" rowSpan={4} colSpan={1}>
+          <EffectRack
+            synth={synth}
+          />
+        </GridItem>
+        <GridItem bg="papayawhip">
+          <SetController
+            inputList={inputList}
+            input={input}
+            channel={channel}
+            setInput={setInput}
+            setChannel={setChannel}
+          />
+        </GridItem>
+        <GridItem bg="tomato">
+          <ADSREnvelope
+            synth={synth}
+          />
+        </GridItem>
+        <GridItem bg="papayawhip" colSpan={2} rowSpan={2}>
+          <Graph
+            synth={synth}
+            setSynth={setSynth}
+          />
+        </GridItem>
+
+      </Grid>
+    </Square>
 
   );
 }
