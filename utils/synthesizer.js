@@ -37,6 +37,8 @@ Compressor;
 // Sets input and channel and adds listeners to synth
 constructor() {
   this.synthInit();
+  this.effectInit();
+  this.chainEffects();
 }
 
 // Create new synth and initialise effects
@@ -55,9 +57,8 @@ synthInit(synthName) {
       this.synth = new Tone.PolySynth(Tone.AMSynth);
       break;
   }
-  // this.synth.maxPolyphony = 256;
+  this.synth.maxPolyphony = 100;
   this.synth.volume.value = -20;
-  this.effectInit();
 }
 
 // Create dry effects for chaining
@@ -68,7 +69,6 @@ effectInit() {
   this.setReverbEffect(0, 0.01);
   this.setBiquadFilterEffect(0);
   this.setCompressorEffect(0);
-  this.chainEffects();
 }
 
 // Trigger synth noteon
@@ -139,13 +139,13 @@ set decay(decay) {
   this.setEffects();
 }
 
-// Set sustain
+// Set sustainthis.chainEffects();
 /**
    * @param {number} sustain
    */
 set sustain(sustain) {
   this.sustain = sustain;
-  this.setEffects();
+  this.setEffects(); this.chainEffects();
 }
 
 // Set release
