@@ -9,7 +9,7 @@ import {
 
 import { useState } from 'react';
 
-export default function BiquadFilter({ synth }) {
+export default function BiquadFilter({ synth, isDisabled }) {
   const [value, setValue] = useState('');
 
   function handleClick(e) {
@@ -53,8 +53,8 @@ export default function BiquadFilter({ synth }) {
   return (
     <>
       <h1>BiquadFilter Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} />
-      <Select onInput={handleType}>
+      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+      <Select onInput={handleType} isDisabled={isDisabled}>
         <option>lowpass</option>
         <option>highpass</option>
         <option>bandpass</option>
@@ -65,7 +65,7 @@ export default function BiquadFilter({ synth }) {
         <option>peaking</option>
       </Select>
 
-      <Slider aria-label="slider-ex-1" defaultValue={1} min={1} max={10000} onChange={handleFreq}>
+      <Slider aria-label="slider-ex-1" defaultValue={1} min={1} max={10000} onChange={handleFreq} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

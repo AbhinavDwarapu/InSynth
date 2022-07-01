@@ -8,7 +8,7 @@ import {
 
 import { useState } from 'react';
 
-export default function Reverb({ synth }) {
+export default function Reverb({ synth, isDisabled }) {
   const [value, setValue] = useState('');
 
   function handleClick(e) {
@@ -35,8 +35,8 @@ export default function Reverb({ synth }) {
   return (
     <>
       <h1>Reverb Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} />
-      <Slider aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleSlider}>
+      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+      <Slider aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleSlider} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

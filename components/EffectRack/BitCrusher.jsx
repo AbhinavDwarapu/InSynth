@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
-export default function BitCrusher({ synth }) {
+export default function BitCrusher({ synth, isDisabled }) {
   const [value, setValue] = useState('');
 
   function handleClick(e) {
@@ -33,8 +33,8 @@ export default function BitCrusher({ synth }) {
   return (
     <>
       <h1>BitCrusher Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} />
-      <Slider aria-label="slider-ex-1" defaultValue={7} min={7} max={16} onChange={handleSlider}>
+      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+      <Slider aria-label="slider-ex-1" defaultValue={7} min={7} max={16} onChange={handleSlider} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

@@ -8,7 +8,7 @@ import {
 
 import { useState } from 'react';
 
-export default function Distortion({ synth }) {
+export default function Distortion({ synth, isDisabled }) {
   const [value, setValue] = useState('');
 
   function handleClick(e) {
@@ -34,8 +34,8 @@ export default function Distortion({ synth }) {
   return (
     <>
       <h1>Distortion Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} />
-      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleSlider}>
+      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleSlider} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

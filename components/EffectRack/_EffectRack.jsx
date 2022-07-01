@@ -10,28 +10,28 @@ import Distortion from './Distortion';
 import BiquadFilter from './BiquadFilter';
 import Reverb from './Reverb';
 
-export default function EffectRack({ synth }) {
+export default function EffectRack({ synth, isDisabled }) {
   return (
     <Box>
       <h1>Effect Rack</h1>
       <Grid templateColumns="repeat(1, 1fr)">
         <GridItem>
-          <BitCrusher synth={synth} />
+          <BitCrusher synth={synth} isDisabled={isDisabled} />
         </GridItem>
         <GridItem>
-          <Chorus synth={synth} />
+          <Chorus synth={synth} isDisabled={isDisabled} />
         </GridItem>
         <GridItem>
-          <Compressor synth={synth} />
+          <Compressor synth={synth} isDisabled={isDisabled} />
         </GridItem>
         <GridItem>
-          <Distortion synth={synth} />
+          <Distortion synth={synth} isDisabled={isDisabled} />
         </GridItem>
         <GridItem>
-          <BiquadFilter synth={synth} />
+          <BiquadFilter synth={synth} isDisabled={isDisabled} />
         </GridItem>
         <GridItem>
-          <Reverb synth={synth} />
+          <Reverb synth={synth} isDisabled={isDisabled} />
         </GridItem>
       </Grid>
     </Box>

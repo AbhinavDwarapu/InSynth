@@ -8,7 +8,7 @@ import {
 
 import { useState } from 'react';
 
-export default function Chorus({ synth }) {
+export default function Chorus({ synth, isDisabled }) {
   const [value, setValue] = useState('');
 
   function handleClick() {
@@ -70,20 +70,20 @@ export default function Chorus({ synth }) {
   return (
     <>
       <h1>Chorus Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} />
-      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq}>
+      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb />
       </Slider>
-      <Slider aria-label="slider-ex-1" defaultValue={1} min={1} max={1000} onChange={handleDelay}>
+      <Slider aria-label="slider-ex-1" defaultValue={1} min={1} max={1000} onChange={handleDelay} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb />
       </Slider>
-      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth}>
+      <Slider aria-label="slider-ex-1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth} isDisabled={isDisabled}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
