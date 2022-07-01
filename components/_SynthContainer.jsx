@@ -21,9 +21,10 @@ export default function SynthContainer({ listenerFailId }) {
   const lFailId = listenerFailId;
   const toast = useToast();
   const [isLoading, setLoading] = useState(false);
+  const [isDisabled, setDisabled] = useState(true);
   const [notePlayed, setNote] = useState('N/A');
   const [pitchBend, setPitchBend] = useState(0);
-  const [encoder, setEncoder] = useState(0.5);
+  const [encoder, setEncoder] = useState('0.5');
   const [midiData, setMidiData] = useState('0,0,0');
   const [input, setInput] = useState('');
   const [channel, setChannel] = useState(1);
@@ -34,6 +35,7 @@ export default function SynthContainer({ listenerFailId }) {
 
   useEffect(() => {
     setLoading(true);
+    setDisabled(true);
 
     WebMidi.enable().then(() => {
       // Initialise Synthesizer
@@ -80,6 +82,7 @@ export default function SynthContainer({ listenerFailId }) {
         });
       } catch (e) {
         setListenerFailed(true);
+        setDisabled(true);
         console.log('Listeners for data panel failed');
         return;
       }
@@ -88,6 +91,7 @@ export default function SynthContainer({ listenerFailId }) {
 
     // Load skeleton while WebMidi initialises
     setLoading(false);
+    setDisabled(false);
 
     // Create input list for set controller component
   }, [channel, input]);
@@ -123,39 +127,60 @@ export default function SynthContainer({ listenerFailId }) {
 
   return (
     <Square
+      bg="background"
       justifyContent="center"
       alignItems="center"
       height="100vh"
       minW={840}
       minH={800}
-
     >
       <Grid
         templateColumns="repeat(3, 1fr)"
         templateRows="repeat(3, 1fr)"
-        gap={4}
-        m={4}
+        gap={3}
 
       >
-        <GridItem bg="tomato">
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+        >
           <DataPanel
             note={notePlayed}
             pitchbend={pitchBend}
             encoder={encoder}
             midiData={midiData}
+            isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem bg="papayawhip">
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+        >
           <SynthSelector
             synth={synth}
+            isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem bg="tomato" rowSpan={4} colSpan={1}>
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+          rowSpan={4}
+          colSpan={1}
+
+        >
           <EffectRack
             synth={synth}
+            isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem bg="papayawhip">
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+        >
           <SetController
             inputList={inputList}
             input={input}
@@ -164,15 +189,26 @@ export default function SynthContainer({ listenerFailId }) {
             setChannel={setChannel}
           />
         </GridItem>
-        <GridItem bg="tomato">
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+        >
           <ADSREnvelope
             synth={synth}
+            isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem bg="papayawhip" colSpan={2} rowSpan={2}>
+        <GridItem
+          bg="panel"
+          boxShadow="2xl"
+          rounded="lg"
+          colSpan={2}
+          rowSpan={2}
+        >
           <Graph
             synth={synth}
-            setSynth={setSynth}
+            isDisabled={isDisabled}
           />
         </GridItem>
 

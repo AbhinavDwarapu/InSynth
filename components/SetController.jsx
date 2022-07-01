@@ -1,12 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-no-bind */
 import {
-  Box,
   Select,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
+  useNumberInput,
+  Grid,
+  GridItem,
+  Text,
+  Input,
+  HStack,
+  Button,
 } from '@chakra-ui/react';
 
 export default function SetController({ setInput, setChannel, inputList }) {
@@ -18,29 +20,38 @@ export default function SetController({ setInput, setChannel, inputList }) {
   function changeInput(e) {
     setInput((e.target.value).toString());
   }
-  function changeChannel(e) {
-    setChannel(e);
-  }
+
+  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
+    step: 1,
+    defaultValue: 1,
+    min: 1,
+    max: 16,
+    precision: 0,
+  });
+
+  const inc = getIncrementButtonProps();
+  const dec = getDecrementButtonProps();
+  const input = getInputProps();
+  setChannel(input.value);
 
   return (
-    <Box>
-      <h1>Set Controller</h1>
-      <Select onClick={changeInput} placeholder="Select Controller">
-        {jsx}
-      </Select>
-      <NumberInput
-        defaultValue={1}
-        min={1}
-        max={16}
-        onChange={changeChannel}
-      >
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
+    <Grid>
+      <GridItem textAlign="center" mt={4} mb={4}>
+        <Text fontSize="3xl">Set Controller</Text>
+      </GridItem>
+      <GridItem>
+        <Select onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
+          {jsx}
+        </Select>
+      </GridItem>
+      <GridItem>
+        <HStack maxW="255px" p={4}>
+          <Button {...dec}>-</Button>
+          <Input {...input} />
+          <Button {...inc}>+</Button>
+        </HStack>
+      </GridItem>
+    </Grid>
 
-    </Box>
   );
 }

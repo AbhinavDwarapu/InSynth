@@ -1,15 +1,16 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-no-bind */
 import {
-  Box,
   Slider,
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  MdGraphicEq,
+  Grid,
+  GridItem,
+  Text,
 } from '@chakra-ui/react';
 
-export default function ADSREnvelope({ synth }) {
+export default function ADSREnvelope({ synth, isDisabled }) {
   function getAttack(e) {
     synth.attack = (e / 100).toFixed(2);
   }
@@ -24,62 +25,86 @@ export default function ADSREnvelope({ synth }) {
   }
 
   return (
-    <Box>
-      <h1>ADSR Envelope</h1>
-      <Slider
-        ml={6}
-        mr={6}
-        aria-label="slider-ex-3"
-        defaultValue={30}
-        orientation="vertical"
-        minH="32"
-        onChange={getAttack}
-      >
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-      <Slider
-        mr={6}
-        aria-label="slider-ex-3"
-        defaultValue={30}
-        orientation="vertical"
-        minH="32"
-        onChange={getDecay}
-      >
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-      <Slider
-        mr={6}
-        aria-label="slider-ex-3"
-        defaultValue={30}
-        orientation="vertical"
-        minH="32"
-        onChange={getSustain}
-      >
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb>
-          <Box color="tomato" as={MdGraphicEq} />
-        </SliderThumb>
-      </Slider>
-      <Slider
-        aria-label="slider-ex-3"
-        defaultValue={30}
-        orientation="vertical"
-        minH="32"
-        onChange={getRelease}
-      >
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-    </Box>
+    <>
+      <Grid>
+        <GridItem textAlign="center" mt={4} mb={4}>
+          <Text fontSize="3xl">ADSR Envelope</Text>
+        </GridItem>
+      </Grid>
+      <Grid templateColumns="repeat(4, 1fr)" templateRows="repeat(2, 1fr)" textAlign="center" maxH={32}>
+        <GridItem>
+          <Slider
+            aria-label="slider-ex-3"
+            defaultValue={30}
+            orientation="vertical"
+            height="20"
+            onChange={getAttack}
+            isDisabled={isDisabled}
+          >
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </GridItem>
+        <GridItem>
+          <Slider
+            aria-label="slider-ex-3"
+            defaultValue={30}
+            orientation="vertical"
+            height="20"
+            onChange={getDecay}
+            isDisabled={isDisabled}
+          >
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </GridItem>
+        <GridItem>
+          <Slider
+            aria-label="slider-ex-3"
+            defaultValue={30}
+            orientation="vertical"
+            height="20"
+            onChange={getSustain}
+            isDisabled={isDisabled}
+          >
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </GridItem>
+        <GridItem>
+          <Slider
+            aria-label="slider-ex-3"
+            defaultValue={30}
+            orientation="vertical"
+            height="20"
+            onChange={getRelease}
+            isDisabled={isDisabled}
+          >
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </GridItem>
+        <GridItem>
+          Attack
+        </GridItem>
+        <GridItem>
+          Decay
+        </GridItem>
+        <GridItem>
+          Sustain
+        </GridItem>
+        <GridItem>
+          Release
+        </GridItem>
+      </Grid>
+    </>
   );
 }
