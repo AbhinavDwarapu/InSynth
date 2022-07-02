@@ -134,17 +134,8 @@ export default function SynthContainer({ listenerFailId }) {
       minW={840}
       minH={800}
     >
-      <Grid
-        templateColumns="repeat(3, 1fr)"
-        templateRows="repeat(3, 1fr)"
-        gap={3}
-
-      >
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-        >
+      <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={3}>
+        <GridItem width={256} height={256} bg="panel" boxShadow="2xl" rounded="lg">
           <DataPanel
             note={notePlayed}
             pitchbend={pitchBend}
@@ -153,34 +144,16 @@ export default function SynthContainer({ listenerFailId }) {
             isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-        >
-          <SynthSelector
-            synth={synth}
-            isDisabled={isDisabled}
-          />
+        <GridItem bg="panel" boxShadow="2xl" rounded="lg">
+          <SynthSelector synth={synth} isDisabled={isDisabled} />
         </GridItem>
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-          rowSpan={4}
-          colSpan={1}
-
-        >
+        <GridItem bg="panel" boxShadow="2xl" rounded="lg" rowSpan={4} colSpan={1}>
           <EffectRack
             synth={synth}
             isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-        >
+        <GridItem bg="panel" boxShadow="2xl" rounded="lg">
           <SetController
             inputList={inputList}
             input={input}
@@ -189,29 +162,12 @@ export default function SynthContainer({ listenerFailId }) {
             setChannel={setChannel}
           />
         </GridItem>
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-        >
-          <ADSREnvelope
-            synth={synth}
-            isDisabled={isDisabled}
-          />
+        <GridItem bg="panel" boxShadow="2xl" rounded="lg">
+          <ADSREnvelope synth={synth} isDisabled={isDisabled} />
         </GridItem>
-        <GridItem
-          bg="panel"
-          boxShadow="2xl"
-          rounded="lg"
-          colSpan={2}
-          rowSpan={2}
-        >
-          <Graph
-            synth={synth}
-            isDisabled={isDisabled}
-          />
+        <GridItem bg="panel" boxShadow="2xl" rounded="lg" colSpan={2} rowSpan={2}>
+          <Graph synth={synth} isDisabled={isDisabled} />
         </GridItem>
-
       </Grid>
     </Square>
 

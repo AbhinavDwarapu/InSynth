@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-no-bind */
 import {
   Grid,
-  Text,
+  GridItem,
   Button,
+  Flex,
+  Box,
 } from '@chakra-ui/react';
 
 import { useState } from 'react';
@@ -25,28 +27,18 @@ export default function SynthSelector({
   }
 
   return (
-    <Grid textAlign="center" mt={4}>
-      <Text fontSize="3xl" mb={1}>Select Synth</Text>
-      <Button
-        isDisabled={isDisabled}
-        isActive={AMSynth}
-        onClick={changeSynth}
-        width={48}
-        margin="auto"
-        mb={2}
-        mt={4}
-      >
-        AMSynth
-      </Button>
-      <Button
-        isDisabled={isDisabled}
-        isActive={!AMSynth}
-        onClick={changeSynth}
-        width={48}
-        margin="auto"
-      >
-        FMSynth
-      </Button>
-    </Grid>
+    <Flex direction="column" width={256} height={256}>
+      <Grid textAlign="center" flexGrow="1">
+        <GridItem margin="auto">
+          <Button isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
+            AMSynth
+          </Button>
+          <Button isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
+            FMSynth
+          </Button>
+        </GridItem>
+      </Grid>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">Select Synth</Box>
+    </Flex>
   );
 }

@@ -5,10 +5,11 @@ import {
   useNumberInput,
   Grid,
   GridItem,
-  Text,
+  Box,
   Input,
   HStack,
   Button,
+  Flex,
 } from '@chakra-ui/react';
 
 export default function SetController({ setInput, setChannel, inputList }) {
@@ -35,23 +36,23 @@ export default function SetController({ setInput, setChannel, inputList }) {
   setChannel(input.value);
 
   return (
-    <Grid>
-      <GridItem textAlign="center" mt={4} mb={4}>
-        <Text fontSize="3xl">Set Controller</Text>
-      </GridItem>
-      <GridItem>
-        <Select onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
-          {jsx}
-        </Select>
-      </GridItem>
-      <GridItem>
-        <HStack maxW="255px" p={4}>
-          <Button {...dec}>-</Button>
-          <Input {...input} />
-          <Button {...inc}>+</Button>
-        </HStack>
-      </GridItem>
-    </Grid>
+    <Flex direction="column" width={256} height={256}>
+      <Grid textAlign="center" flexGrow="1">
+        <GridItem margin="auto" mb={2}>
+          <Select onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
+            {jsx}
+          </Select>
+        </GridItem>
+        <GridItem margin="auto" mt={2}>
+          <HStack maxW="255px" pl={4} pr={4}>
+            <Button {...dec}>-</Button>
+            <Input {...input} />
+            <Button {...inc}>+</Button>
+          </HStack>
+        </GridItem>
+      </Grid>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">Select Synth</Box>
+    </Flex>
 
   );
 }
