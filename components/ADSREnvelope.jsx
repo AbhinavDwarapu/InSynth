@@ -38,6 +38,7 @@ export default function ADSREnvelope({ synth, isDisabled }) {
 
   return (
     <Flex direction="column" width={256} height={256} flexGrow="1">
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedBottom="lg" w={210} transform="translate(+22px, 0px)">ADSR Envelope</Box>
       <Flex direction="row" mt={5} mb={3} textAlign="center">
         <Spacer />
         <Text textColor="custom.900" w="20%">Attack</Text>
@@ -91,7 +92,7 @@ export default function ADSREnvelope({ synth, isDisabled }) {
         <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
         <Spacer />
       </Flex>
-      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">ADSR Envelope</Box>
+
     </Flex>
   );
 }

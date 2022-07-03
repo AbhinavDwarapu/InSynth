@@ -42,7 +42,7 @@ export default function BitCrusher({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
+    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
       <Box textColor="custom.900" textAlign="center">BitCrusher Effect</Box>
       <Switch colorScheme="custom" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
       <Box textColor="custom.900" textAlign="left" fontSize="sm">Bits</Box>

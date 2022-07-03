@@ -11,8 +11,8 @@ import Reverb from './Reverb';
 
 export default function EffectRack({ synth, isDisabled }) {
   return (
-    <VStack align="stretch" spacing="24px">
-      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedBottom="lg">Effect Rack</Box>
+    <VStack align="stretch" spacing="24px" mb={5}>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedBottom="lg" w={224} transform="translate(+14px, 0px)">Effect Rack</Box>
 
       <Box>
         <BitCrusher synth={synth} isDisabled={isDisabled} />

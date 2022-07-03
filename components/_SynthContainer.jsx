@@ -127,7 +127,7 @@ export default function SynthContainer({ listenerFailId }) {
 
   return (
     <Square
-      bg="custom.300"
+      bg="custom.200"
       justifyContent="center"
       alignItems="center"
       height="100vh"
@@ -135,7 +135,7 @@ export default function SynthContainer({ listenerFailId }) {
       minH={800}
     >
       <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl">
+        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
           <DataPanel
             note={notePlayed}
             pitchbend={pitchBend}
@@ -144,16 +144,16 @@ export default function SynthContainer({ listenerFailId }) {
             isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl">
+        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
           <SynthSelector synth={synth} isDisabled={isDisabled} />
         </GridItem>
-        <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1}>
+        <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
           <EffectRack
             synth={synth}
             isDisabled={isDisabled}
           />
         </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl">
+        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
           <SetController
             inputList={inputList}
             input={input}
@@ -162,10 +162,10 @@ export default function SynthContainer({ listenerFailId }) {
             setChannel={setChannel}
           />
         </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl">
+        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
           <ADSREnvelope synth={synth} isDisabled={isDisabled} />
         </GridItem>
-        <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2}>
+        <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
           <Graph synth={synth} isDisabled={isDisabled} />
         </GridItem>
       </Grid>

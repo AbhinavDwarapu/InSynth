@@ -27,6 +27,7 @@ export default function SynthSelector({
 
   return (
     <Flex direction="column" width={256} height={256}>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedBottom="lg" w={210} transform="translate(+22px, 0px)">Select Synth</Box>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto">
           <Button colorScheme="custom" rounded="base" isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
@@ -37,7 +38,7 @@ export default function SynthSelector({
           </Button>
         </GridItem>
       </Grid>
-      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">Select Synth</Box>
+
     </Flex>
   );
 }

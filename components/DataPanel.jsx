@@ -14,6 +14,7 @@ export default function DataPanel({
 }) {
   return (
     <Flex direction="column" width={256} height={256}>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedBottom="lg" w={210} transform="translate(+22px, 0px)">Data Panel</Box>
       <Grid templateColumns="repeat(2, 1fr)" templateRows="repeat(3, 1fr)" m={4} mt={8} ml={8} flexGrow="1">
 
         <GridItem colStart={1} rowSpan={1} rowStart={1}>
@@ -45,7 +46,7 @@ export default function DataPanel({
           </Stat>
         </GridItem>
       </Grid>
-      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">Data Panel</Box>
+
     </Flex>
   );
 }
