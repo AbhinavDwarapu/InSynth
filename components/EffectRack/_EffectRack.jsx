@@ -4,10 +4,9 @@ import {
 } from '@chakra-ui/react';
 import BitCrusher from './BitCrusher';
 import Chorus from './Chorus';
-// import Compressor from './Compressor';
 import Distortion from './Distortion';
-// import BiquadFilter from './BiquadFilter';
 import Reverb from './Reverb';
+import Phaser from './Phaser';
 
 export default function EffectRack({ synth, isDisabled }) {
   return (
@@ -17,20 +16,17 @@ export default function EffectRack({ synth, isDisabled }) {
       <Box>
         <BitCrusher synth={synth} isDisabled={isDisabled} />
       </Box>
-      {/* <Box>
-        <BiquadFilter synth={synth} isDisabled={isDisabled} />
-      </Box> */}
       <Box>
         <Chorus synth={synth} isDisabled={isDisabled} />
       </Box>
-      {/* <Box>
-        <Compressor synth={synth} isDisabled={isDisabled} />
-      </Box> */}
       <Box>
         <Distortion synth={synth} isDisabled={isDisabled} />
       </Box>
       <Box>
         <Reverb synth={synth} isDisabled={isDisabled} />
+      </Box>
+      <Box>
+        <Phaser synth={synth} isDisabled={isDisabled} />
       </Box>
 
     </VStack>

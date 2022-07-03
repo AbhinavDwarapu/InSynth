@@ -34,6 +34,8 @@ BiquadFilter;
 
 Compressor;
 
+Phaser;
+
 // Sets input and channel and adds listeners to synth
 constructor() {
   this.synthInit();
@@ -79,8 +81,9 @@ effectInit() {
   this.Reverb.set({
     wet: 0,
   });
-  this.BiquadFilter = new Tone.BiquadFilter().toDestination();
-  this.BiquadFilter.set({
+
+  this.Phaser = new Tone.Phaser();
+  this.Phaser.set({
     wet: 0,
   });
 }
@@ -130,7 +133,7 @@ chainEffects() {
     this.Chorus,
     this.Distortion,
     this.Reverb,
-    this.BiquadFilter,
+    this.Phaser,
     // this.Compressor,
     Tone.Destination,
   );
