@@ -16,11 +16,15 @@ export default function BitCrusher({ synth, isDisabled }) {
 
   function handleClick(e) {
     if (toggle) {
-      synth.setBitCrusherEffect(0);
+      synth.BitCrusher.set({
+        wet: 0,
+      });
       synth.chainEffects();
       setToggle(false);
     } else {
-      synth.setBitCrusherEffect(e.target.checked, 7);
+      synth.BitCrusher.set({
+        wet: e.target.checked,
+      });
       synth.chainEffects();
       setToggle(true);
     }
@@ -30,7 +34,10 @@ export default function BitCrusher({ synth, isDisabled }) {
       setToggle(true);
     }
     setBits(e);
-    synth.setBitCrusherEffect(1, e);
+    synth.BitCrusher.set({
+      wet: 1,
+      bits: e,
+    });
     synth.chainEffects();
   }
 
@@ -40,7 +47,7 @@ export default function BitCrusher({ synth, isDisabled }) {
       <Switch onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
       <Box textAlign="left" fontSize="sm">Bits</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={7} min={7} max={16} onChange={handleSlider} isDisabled={isDisabled}>
+        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={16} onChange={handleSlider} isDisabled={isDisabled}>
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
