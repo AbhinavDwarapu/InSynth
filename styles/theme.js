@@ -7,15 +7,6 @@ const theme = extendTheme({
     panel: '#ffffff',
   },
   components: {
-    StatNumber: {
-      variants: {
-        'display': {
-          boxShadow: 'inner',
-          textAlign: 'center',
-          bg: 'gray.100',
-        },
-      },
-    },
   },
 });
 

@@ -63,12 +63,26 @@ synthInit(synthName) {
 
 // Create dry effects for chaining
 effectInit() {
-  this.setBitCrusherEffect(0);
-  this.setChorusEffect(0, 0, 0, 0);
-  this.setDistortionEffect(0);
-  this.setReverbEffect(0, 0.01);
-  this.setBiquadFilterEffect(0);
-  this.setCompressorEffect(0);
+  this.BitCrusher = new Tone.BitCrusher();
+  this.BitCrusher.set({
+    wet: 0,
+  });
+  this.Chorus = new Tone.Chorus().start();
+  this.Chorus.set({
+    wet: 0,
+  });
+  this.Distortion = new Tone.Distortion();
+  this.Distortion.set({
+    wet: 0,
+  });
+  this.Reverb = new Tone.Reverb();
+  this.Reverb.set({
+    wet: 0,
+  });
+  this.BiquadFilter = new Tone.BiquadFilter().toDestination();
+  this.BiquadFilter.set({
+    wet: 0,
+  });
 }
 
 // Trigger synth noteon
@@ -175,17 +189,6 @@ setBitCrusherEffect(wet, value) {
   });
 }
 
-// Set chorus effect
-setChorusEffect(wet, freq, delay, depth) {
-  if (this.Chorus != null) {
-    this.Chorus.dispose();
-  }
-  this.Chorus = new Tone.Chorus(freq, delay, depth).toDestination().start();
-  this.Chorus.set({
-    wet,
-  });
-}
-
 // Set distortion effect
 setDistortionEffect(wet, value) {
   if (this.Distortion != null) {
@@ -220,17 +223,17 @@ setBiquadFilterEffect(wet, frequency, type) {
 }
 
 // Set compressor effect
-setCompressorEffect(wet, thres, ratio) {
-  if (this.Compressor != null) {
-    this.Compressor.dispose();
-  }
+// setCompressorEffect(wet, thres, ratio) {
+//   if (this.Compressor != null) {
+//     this.Compressor.dispose();
+//   }
 
-  if (wet === 0) {
-    this.Compressor = new Tone.Compressor(-24, 12);
-  } else {
-    this.Compressor = new Tone.Compressor(thres, ratio);
-  }
-}
+//   if (wet === 0) {
+//     this.Compressor = new Tone.Compressor(-24, 12);
+//   } else {
+//     this.Compressor = new Tone.Compressor(thres, ratio);
+//   }
+// }
 
 // Get controller
 get controller() {
