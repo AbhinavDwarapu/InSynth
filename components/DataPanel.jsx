@@ -18,34 +18,34 @@ export default function DataPanel({
 
         <GridItem colStart={1} rowSpan={1} rowStart={1}>
           <Stat>
-            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center">{note}</StatNumber>
+            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center" rounded="base">{note}</StatNumber>
             <StatLabel color="gray.500">Note Played</StatLabel>
           </Stat>
         </GridItem>
         <GridItem colStart={1} rowSpan={1} rowStart={2}>
           <Stat>
-            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center">{(encoder * 100).toFixed(0)}</StatNumber>
+            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center" rounded="base">{(encoder * 100).toFixed(0)}</StatNumber>
             <StatLabel color="gray.500">Encoder Value</StatLabel>
           </Stat>
         </GridItem>
         <GridItem colStart={1} rowSpan={1} rowStart={3}>
           <Stat>
-            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center">{midiData}</StatNumber>
+            <StatNumber fontSize="lg" bg="gray.100" boxShadow="inner" textAlign="center" rounded="base">{midiData}</StatNumber>
             <StatLabel color="gray.500">Midi Value</StatLabel>
           </Stat>
         </GridItem>
         <GridItem colStart={2} rowStart={1} rowEnd={3}>
           <Stat>
-            <Progress transform="rotate(-90deg) translate(-54px, 3px) scale(1.35, 1)" height="32px" boxShadow="inner" value={((pitchbend * 50) + 50).toFixed(0)} />
+            <Progress transform="rotate(-90deg) translate(-54px, 3.5px) scale(1.35, 1)" height="32px" boxShadow="inner" rounded="base" value={((pitchbend * 50) + 50).toFixed(0)} />
           </Stat>
         </GridItem>
         <GridItem colStart={2} rowStart={5} rowEnd={5} position="relative">
           <Stat>
-            <StatLabel position="absolute" bottom="0" right="5" color="gray.500">Pitch Bend</StatLabel>
+            <StatLabel position="absolute" bottom="2" right="3.5" color="gray.500">Pitch Bend</StatLabel>
           </Stat>
         </GridItem>
       </Grid>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">Data Panel</Box>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">Data Panel</Box>
     </Flex>
   );
 }

@@ -51,7 +51,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
           </HStack>
         </GridItem>
       </Grid>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">Select Synth</Box>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">Set Controler</Box>
     </Flex>
 
   );

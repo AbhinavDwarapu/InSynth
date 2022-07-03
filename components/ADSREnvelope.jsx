@@ -91,7 +91,7 @@ export default function ADSREnvelope({ synth, isDisabled }) {
         <Box bg="gray.100" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
         <Spacer />
       </Flex>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">ADSR Envelope</Box>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">ADSR Envelope</Box>
     </Flex>
   );
 }

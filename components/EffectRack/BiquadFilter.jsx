@@ -5,55 +5,57 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Select,
+  Flex,
+  Box,
 } from '@chakra-ui/react';
 
 import { useState } from 'react';
 
 export default function BiquadFilter({ synth, isDisabled }) {
-  const [value, setValue] = useState('');
+  const [toggle, setToggle] = useState('');
 
   function handleClick(e) {
-    if (value) {
-      synth.setBiquadFilterEffect(0);
+    if (toggle) {
+      synth.BiquadFilter.set({
+        wet: 0,
+      });
       synth.chainEffects();
-      setValue(false);
+      setToggle(false);
     } else {
-      synth.setBiquadFilterEffect(e.target.checked, 0.1);
+      synth.BiquadFilter.set({
+        wet: e.target.checked,
+      });
       synth.chainEffects();
-      setValue(true);
+      setToggle(true);
     }
   }
 
   function handleType(e) {
-    if (!value) {
-      setValue(true);
+    if (!toggle) {
+      setToggle(true);
     }
-    synth.setBiquadFilterEffect(
-      1,
-      synth.BiquadFilter.get().frequency,
-      e.target.value,
-      synth.BiquadFilter.get().rolloff,
-    );
+    synth.BiquadFilter.set({
+      wet: 1,
+      type: e.target.value,
+    });
   }
 
   function handleFreq(e) {
-    if (!value) {
-      setValue(true);
+    if (!toggle) {
+      setToggle(true);
     }
 
-    synth.setBiquadFilterEffect(
-      1,
-      e,
-      synth.BiquadFilter.get().type,
-      synth.BiquadFilter.get().rolloff,
-    );
+    synth.BiquadFilter.set({
+      wet: 1,
+      frequency: e,
+    });
     synth.chainEffects();
   }
 
   return (
-    <>
-      <h1>BiquadFilter Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
+    <Flex direction="column" bg="gray.100" rounded="base" width="90%" alignItems="center" justifyContent="center" display="flex" margin="auto" p={4}>
+      <Box>BiquadFilter Effect</Box>
+      <Switch onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
       <Select onInput={handleType} isDisabled={isDisabled}>
         <option>lowpass</option>
         <option>highpass</option>
@@ -71,6 +73,6 @@ export default function BiquadFilter({ synth, isDisabled }) {
         </SliderTrack>
         <SliderThumb />
       </Slider>
-    </>
+    </Flex>
   );
 }

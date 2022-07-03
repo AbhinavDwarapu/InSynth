@@ -4,44 +4,60 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Flex,
+  Box,
+  HStack,
 } from '@chakra-ui/react';
 
 import { useState } from 'react';
 
 export default function Reverb({ synth, isDisabled }) {
-  const [value, setValue] = useState('');
+  const [toggle, setToggle] = useState('');
+  const [decay, setDecay] = useState(0);
 
   function handleClick(e) {
-    if (value) {
-      synth.setReverbEffect(0);
+    if (toggle) {
+      synth.Reverb.set({
+        wet: 0,
+      });
       synth.chainEffects();
-      setValue(false);
+      setToggle(false);
     } else {
-      synth.setReverbEffect(e.target.checked, 0.1);
+      synth.Reverb.set({
+        wet: e.target.checked,
+      });
       synth.chainEffects();
-      setValue(true);
+      setToggle(true);
     }
   }
 
-  function handleSlider(e) {
-    if (!value) {
-      setValue(true);
+  function handleDecay(e) {
+    if (!toggle) {
+      setToggle(true);
     }
-
-    synth.setReverbEffect(1, e);
+    setDecay(e);
+    synth.Reverb.set({
+      wet: 1,
+      decay: e,
+    });
     synth.chainEffects();
   }
 
   return (
-    <>
-      <h1>Reverb Effect</h1>
-      <Switch onChange={handleClick} isChecked={value} isDisabled={isDisabled} />
-      <Slider aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleSlider} isDisabled={isDisabled}>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-    </>
+    <Flex direction="column" bg="gray.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
+      <Box textAlign="center">Reverb Effect</Box>
+      <Switch textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
+      <Box textAlign="left" fontSize="sm">Decay</Box>
+      <HStack>
+        <Slider aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleDecay} isDisabled={isDisabled}>
+          <SliderTrack>
+            <SliderFilledTrack />
+          </SliderTrack>
+          <SliderThumb />
+        </Slider>
+        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{decay.toFixed(2)}</Box>
+      </HStack>
+
+    </Flex>
   );
 }

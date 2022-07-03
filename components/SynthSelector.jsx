@@ -30,15 +30,15 @@ export default function SynthSelector({
     <Flex direction="column" width={256} height={256}>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto">
-          <Button isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
+          <Button rounded="base" isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
             AMSynth
           </Button>
-          <Button isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
+          <Button rounded="base" isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
             FMSynth
           </Button>
         </GridItem>
       </Grid>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={10} bg="gray.200" rounded="lg">Select Synth</Box>
+      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">Select Synth</Box>
     </Flex>
   );
 }
