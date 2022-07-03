@@ -39,19 +39,19 @@ export default function SetController({ setInput, setChannel, inputList }) {
     <Flex direction="column" width={256} height={256}>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto" mb={2}>
-          <Select onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
+          <Select textColor="custom.900" borderColor="custom.100" colorScheme="custom" onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
             {jsx}
           </Select>
         </GridItem>
         <GridItem margin="auto" mt={2}>
           <HStack maxW="255px" pl={4} pr={4}>
-            <Button {...dec}>-</Button>
-            <Input {...input} />
-            <Button {...inc}>+</Button>
+            <Button {...dec} colorScheme="custom">-</Button>
+            <Input textColor="custom.900" borderColor="custom.100" {...input} />
+            <Button {...inc} colorScheme="custom">+</Button>
           </HStack>
         </GridItem>
       </Grid>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">Set Controler</Box>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">Set Controler</Box>
     </Flex>
 
   );

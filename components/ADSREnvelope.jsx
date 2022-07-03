@@ -40,40 +40,40 @@ export default function ADSREnvelope({ synth, isDisabled }) {
     <Flex direction="column" width={256} height={256} flexGrow="1">
       <Flex direction="row" mt={5} mb={3} textAlign="center">
         <Spacer />
-        <Text w="20%">Attack</Text>
+        <Text textColor="custom.900" w="20%">Attack</Text>
         <Spacer />
-        <Text w="20%">Decay</Text>
+        <Text textColor="custom.900" w="20%">Decay</Text>
         <Spacer />
-        <Text w="20%">Sus.</Text>
+        <Text textColor="custom.900" w="20%">Sus.</Text>
         <Spacer />
-        <Text w="20%">Rel.</Text>
+        <Text textColor="custom.900" w="20%">Rel.</Text>
         <Spacer />
       </Flex>
       <Flex direction="row" flexGrow="1" pb={4}>
         <Spacer />
-        <Slider aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
@@ -82,16 +82,16 @@ export default function ADSREnvelope({ synth, isDisabled }) {
       </Flex>
       <Flex direction="row" mb={3}>
         <Spacer />
-        <Box bg="gray.100" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
+        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
         <Spacer />
-        <Box bg="gray.100" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
+        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
         <Spacer />
-        <Box bg="gray.100" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
+        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
         <Spacer />
-        <Box bg="gray.100" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
+        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
         <Spacer />
       </Flex>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">ADSR Envelope</Box>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">ADSR Envelope</Box>
     </Flex>
   );
 }

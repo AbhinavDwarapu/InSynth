@@ -93,62 +93,62 @@ export default function Chorus({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" bg="gray.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
-      <Box textAlign="center">Chorus Effect</Box>
-      <Switch textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
-      <Box fontSize="sm">Frequency</Box>
+    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
+      <Box textColor="custom.900" textAlign="center">Chorus Effect</Box>
+      <Switch colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
+      <Box textColor="custom.900" fontSize="sm">Frequency</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency.toFixed(1)}</Box>
+        <Box bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency.toFixed(1)}</Box>
       </HStack>
 
-      <Box fontSize="sm">Delay</Box>
+      <Box textColor="custom.900" fontSize="sm">Delay</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={1000} onChange={handleDelay} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={1000} onChange={handleDelay} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
       </HStack>
 
-      <Box fontSize="sm">Depth</Box>
+      <Box textColor="custom.900" fontSize="sm">Depth</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
       </HStack>
 
-      <Box fontSize="sm">Feedback</Box>
+      <Box textColor="custom.900" fontSize="sm">Feedback</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={0.95} step={0.05} onChange={handleFeedback} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={0.95} step={0.05} onChange={handleFeedback} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
       </HStack>
 
-      <Box fontSize="sm">Spread</Box>
+      <Box textColor="custom.900" fontSize="sm">Spread</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={180} onChange={handleSpread} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={180} onChange={handleSpread} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
       </HStack>
 
     </Flex>

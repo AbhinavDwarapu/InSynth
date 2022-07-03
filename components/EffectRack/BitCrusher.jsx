@@ -42,18 +42,18 @@ export default function BitCrusher({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" bg="gray.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
-      <Box textAlign="center">BitCrusher Effect</Box>
-      <Switch onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
-      <Box textAlign="left" fontSize="sm">Bits</Box>
+    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
+      <Box textColor="custom.900" textAlign="center">BitCrusher Effect</Box>
+      <Switch colorScheme="custom" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
+      <Box textColor="custom.900" textAlign="left" fontSize="sm">Bits</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={16} onChange={handleSlider} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={16} onChange={handleSlider} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{bits}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{bits}</Box>
       </HStack>
 
     </Flex>

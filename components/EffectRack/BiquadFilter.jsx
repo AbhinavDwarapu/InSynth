@@ -53,7 +53,7 @@ export default function BiquadFilter({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" bg="gray.100" rounded="base" width="90%" alignItems="center" justifyContent="center" display="flex" margin="auto" p={4}>
+    <Flex direction="column" bg="gray.900" rounded="base" width="90%" alignItems="center" justifyContent="center" display="flex" margin="auto" p={4}>
       <Box>BiquadFilter Effect</Box>
       <Switch onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
       <Select onInput={handleType} isDisabled={isDisabled}>

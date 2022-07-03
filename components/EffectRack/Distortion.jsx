@@ -71,28 +71,28 @@ export default function Distortion({ synth, isDisabled }) {
     synth.chainEffects();
   }
   return (
-    <Flex direction="column" bg="gray.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
-      <Box textAlign="center">Distortion Effect</Box>
-      <Switch textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
-      <Box textAlign="left" fontSize="sm">Distortion</Box>
+    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="base" width="90%" display="flex" margin="auto" p={4}>
+      <Box textColor="custom.900" textAlign="center">Distortion Effect</Box>
+      <Switch colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
+      <Box textColor="custom.900" textAlign="left" fontSize="sm">Distortion</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{distort.toFixed(1)}</Box>
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{distort.toFixed(1)}</Box>
       </HStack>
-      <Box textAlign="left" fontSize="sm">Over Sample</Box>
+      <Box textColor="custom.900" textAlign="left" fontSize="sm">Over Sample</Box>
       <HStack>
-        <Slider aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample} isDisabled={isDisabled}>
-          <SliderTrack>
+        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample} isDisabled={isDisabled}>
+          <SliderTrack bg="custom.50">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
-        <Box bg="gray.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
+        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
           {overSample}
           x
         </Box>

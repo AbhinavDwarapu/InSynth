@@ -18,7 +18,6 @@ export default function SynthSelector({
     synth.synthInit((e.target.innerHTML).toString());
     synth.chainEffects();
     setAMSynth(!AMSynth);
-
     if (e.target.innerHTML === 'AMSynth') {
       setAMSynth(true);
     } else {
@@ -30,15 +29,15 @@ export default function SynthSelector({
     <Flex direction="column" width={256} height={256}>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto">
-          <Button rounded="base" isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
+          <Button colorScheme="custom" rounded="base" isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
             AMSynth
           </Button>
-          <Button rounded="base" isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
+          <Button colorScheme="custom" rounded="base" isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
             FMSynth
           </Button>
         </GridItem>
       </Grid>
-      <Box fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="gray.200" roundedTop="lg" w={210} transform="translate(+24px)">Select Synth</Box>
+      <Box textColor="custom.900" fontSize="lg" alignItems="center" justifyContent="center" display="flex" height={8} bg="custom.100" roundedTop="lg" w={210} transform="translate(+24px)">Select Synth</Box>
     </Flex>
   );
 }
