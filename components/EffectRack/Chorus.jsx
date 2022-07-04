@@ -93,9 +93,9 @@ export default function Chorus({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
       <Box textColor="custom.900" textAlign="center">Chorus Effect</Box>
-      <Switch colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
+      <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
       <Box textColor="custom.900" fontSize="sm">Frequency</Box>
       <HStack>
         <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq} isDisabled={isDisabled}>

@@ -44,9 +44,9 @@ export default function Reverb({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
       <Box textColor="custom.900" textAlign="center">Reverb Effect</Box>
-      <Switch colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
+      <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} />
       <Box textColor="custom.900" textAlign="left" fontSize="sm">Decay</Box>
       <HStack>
         <Slider colorScheme="custom" aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleDecay} isDisabled={isDisabled}>

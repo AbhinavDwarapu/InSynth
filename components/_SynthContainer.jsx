@@ -127,7 +127,7 @@ export default function SynthContainer({ listenerFailId }) {
 
   return (
     <Square
-      bg="custom.200"
+      bg="custom.background"
       justifyContent="center"
       alignItems="center"
       height="100vh"

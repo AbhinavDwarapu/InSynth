@@ -67,9 +67,9 @@ export default function Phaser({ synth, isDisabled }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="base" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
       <Box textColor="custom.900" textAlign="center">Phaser Effect</Box>
-      <Switch colorScheme="custom" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
+      <Switch mt={1} colorScheme="custom" onChange={handleClick} isChecked={toggle} isDisabled={isDisabled} textAlign="center" />
 
       <Box textColor="custom.900" textAlign="left" fontSize="sm">Frequency</Box>
       <HStack>
