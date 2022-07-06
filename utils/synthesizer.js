@@ -59,8 +59,8 @@ synthInit(synthName) {
       this.synth = new Tone.PolySynth(Tone.AMSynth);
       break;
   }
-  this.synth.maxPolyphony = 100;
-  this.synth.volume.value = -20;
+  this.synth.maxPolyphony = 128;
+  this.synth.volume.value = -10;
 }
 
 // Create dry effects for chaining
@@ -89,15 +89,15 @@ effectInit() {
 }
 
 // Trigger synth noteon
-triggerAttackCallback(e) {
+triggerAttackCallback(note, velocity) {
   this.setEffects();
-  this.synth.triggerAttack(e.note.identifier, '+0', e.velocity);
+  this.synth.triggerAttack(note, '+0', velocity);
 }
 
 // Trigger synth noteoff
-triggerReleaseCallback(e) {
+triggerReleaseCallback(note) {
   this.setEffects();
-  this.synth.triggerRelease(e.note.identifier);
+  this.synth.triggerRelease(note);
 }
 
 // Detune synth
