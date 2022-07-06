@@ -73,12 +73,16 @@ export default function SynthContainer({ listenerFailId }) {
       if (list.length === 0) {
         setListenerFailed(true);
         console.log('No controllers detected');
+        setLoading(false);
+        setSynth(WebSynth);
         return;
       }
 
       if (controller === -1) {
         setListenerFailed(true);
         console.log('Synth did not detect controller/channel');
+        setLoading(false);
+        setSynth(WebSynth);
         return;
       }
       try {
@@ -103,6 +107,8 @@ export default function SynthContainer({ listenerFailId }) {
       } catch (e) {
         setListenerFailed(true);
         console.log('Controller not found. (Listeners failed)');
+        setLoading(false);
+        setSynth(WebSynth);
         return;
       }
       setSynth(WebSynth);
