@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "yarn build; start-server-and-test start http://localhost:3000 cypress",
+    "e2e:headless": "yarn build; start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
@@ -23,16 +26,15 @@
     "webmidi": "^3.0.20"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "cypress": "^10.3.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "12.1.6",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^28.1.1",
-    "jest-environment-jsdom": "^28.1.1"
+    "start-server-and-test": "^1.14.0"
   }
 }
