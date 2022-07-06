@@ -10,7 +10,7 @@ import {
 import { useState } from 'react';
 
 export default function SynthSelector({
-  synth, isDisabled,
+  synth,
 }) {
   const [AMSynth, setAMSynth] = useState(true);
 
@@ -44,10 +44,10 @@ export default function SynthSelector({
       </Box>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto">
-          <Button colorScheme="custom" rounded="base" isDisabled={isDisabled} isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
+          <Button colorScheme="custom" rounded="base" isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
             AMSynth
           </Button>
-          <Button colorScheme="custom" rounded="base" isDisabled={isDisabled} isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
+          <Button colorScheme="custom" rounded="base" isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
             FMSynth
           </Button>
         </GridItem>

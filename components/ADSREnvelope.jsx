@@ -13,7 +13,7 @@ import {
 
 import { useState } from 'react';
 
-export default function ADSREnvelope({ synth, isDisabled }) {
+export default function ADSREnvelope({ synth }) {
   const [attackVal, setAttackVal] = useState(30);
   const [decayVal, setDecayVal] = useState(30);
   const [sustainVal, setSustainVal] = useState(30);
@@ -66,28 +66,28 @@ export default function ADSREnvelope({ synth, isDisabled }) {
       </Flex>
       <Flex direction="row" flexGrow="1" pb={4}>
         <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack} isDisabled={isDisabled}>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
           <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay} isDisabled={isDisabled}>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay}>
           <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain} isDisabled={isDisabled}>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain}>
           <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease} isDisabled={isDisabled}>
+        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease}>
           <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>

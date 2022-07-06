@@ -8,7 +8,7 @@ import Distortion from './Distortion';
 import Reverb from './Reverb';
 import Phaser from './Phaser';
 
-export default function EffectRack({ synth, isDisabled }) {
+export default function EffectRack({ synth }) {
   return (
     <VStack align="stretch" spacing="24px" mb={5}>
       <Box
@@ -28,19 +28,19 @@ export default function EffectRack({ synth, isDisabled }) {
       </Box>
 
       <Box>
-        <BitCrusher synth={synth} isDisabled={isDisabled} />
+        <BitCrusher synth={synth} />
       </Box>
       <Box>
-        <Chorus synth={synth} isDisabled={isDisabled} />
+        <Chorus synth={synth} />
       </Box>
       <Box>
-        <Distortion synth={synth} isDisabled={isDisabled} />
+        <Distortion synth={synth} />
       </Box>
       <Box>
-        <Reverb synth={synth} isDisabled={isDisabled} />
+        <Reverb synth={synth} />
       </Box>
       <Box>
-        <Phaser synth={synth} isDisabled={isDisabled} />
+        <Phaser synth={synth} />
       </Box>
 
     </VStack>
