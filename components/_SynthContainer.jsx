@@ -16,12 +16,12 @@ import ADSREnvelope from './ADSREnvelope';
 import EffectRack from './EffectRack/_EffectRack';
 
 import Synthesizer from '../utils/synthesizer';
+import mapKeyToNote from '../utils/keyboardMap';
 
 export default function SynthContainer({ listenerFailId }) {
   const lFailId = listenerFailId;
   const toast = useToast();
   const [isLoading, setLoading] = useState(false);
-  const [isDisabled, setDisabled] = useState(true);
   const [notePlayed, setNote] = useState('N/A');
   const [pitchBend, setPitchBend] = useState(0);
   const [encoder, setEncoder] = useState('0.5');
@@ -35,11 +35,27 @@ export default function SynthContainer({ listenerFailId }) {
 
   useEffect(() => {
     setLoading(true);
-    setDisabled(true);
+    const WebSynth = new Synthesizer();
+
+    // For keyboard support
+    // TODO: event.repeat as been depreciated
+    document.addEventListener('keydown', (event) => {
+      const name = mapKeyToNote(event.key);
+      if (event.repeat || name === -1) return;
+      WebSynth.triggerAttackCallback(name, 1);
+    }, false);
+
+    document.addEventListener('keyup', (event) => {
+      const name = mapKeyToNote(event.key);
+      if (name === -1) return;
+      WebSynth.triggerReleaseCallback(name);
+    }, false);
+
     if (WebMidi.supported === undefined || WebMidi.supported === false) {
       console.log('Unsupported platform.');
       setLoading(false);
       setListenerFailed(true);
+      setSynth(WebSynth);
       return;
     }
 
@@ -52,7 +68,6 @@ export default function SynthContainer({ listenerFailId }) {
       setInputList(list);
 
       const controller = WebMidi.getInputByName(input);
-      const WebSynth = new Synthesizer();
       WebSynth.controller = controller;
       // No controllers
       if (list.length === 0) {
@@ -70,7 +85,7 @@ export default function SynthContainer({ listenerFailId }) {
         controller.channels[channel].addListener('noteon', (e) => {
           setNote(e.note.identifier);
           setMidiData(e.data.toString());
-          WebSynth.triggerAttackCallback(e);
+          WebSynth.triggerAttackCallback(e.note.identifier, e.velocity);
         });
         controller.channels[channel].addListener('pitchbend', (e) => {
           setPitchBend(e.value);
@@ -78,7 +93,7 @@ export default function SynthContainer({ listenerFailId }) {
           WebSynth.setDetuneCallback(e);
         });
         controller.channels[channel].addListener('noteoff', (e) => {
-          WebSynth.triggerReleaseCallback(e);
+          WebSynth.triggerReleaseCallback(e.note.identifier);
         });
         controller.channels[channel].addListener('controlchange', (e) => {
           setEncoder(e.value);
@@ -87,8 +102,7 @@ export default function SynthContainer({ listenerFailId }) {
         });
       } catch (e) {
         setListenerFailed(true);
-        setDisabled(true);
-        console.log('Listeners for data panel failed');
+        console.log('Controller not found. (Listeners failed)');
         return;
       }
       setSynth(WebSynth);
@@ -96,7 +110,6 @@ export default function SynthContainer({ listenerFailId }) {
 
     // Load skeleton while WebMidi initialises
     setLoading(false);
-    setDisabled(false);
 
     // Create input list for set controller component
   }, [channel, input]);
@@ -146,16 +159,14 @@ export default function SynthContainer({ listenerFailId }) {
             pitchbend={pitchBend}
             encoder={encoder}
             midiData={midiData}
-            isDisabled={isDisabled}
           />
         </GridItem>
         <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <SynthSelector synth={synth} isDisabled={isDisabled} />
+          <SynthSelector synth={synth} />
         </GridItem>
         <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
           <EffectRack
             synth={synth}
-            isDisabled={isDisabled}
           />
         </GridItem>
         <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
@@ -168,10 +179,10 @@ export default function SynthContainer({ listenerFailId }) {
           />
         </GridItem>
         <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <ADSREnvelope synth={synth} isDisabled={isDisabled} />
+          <ADSREnvelope synth={synth} />
         </GridItem>
         <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
-          <Graph synth={synth} isDisabled={isDisabled} />
+          <Graph synth={synth} />
         </GridItem>
       </Grid>
     </Square>
