@@ -36,6 +36,12 @@ export default function SynthContainer({ listenerFailId }) {
   useEffect(() => {
     setLoading(true);
     setDisabled(true);
+    if (WebMidi.supported === undefined || WebMidi.supported === false) {
+      console.log('Unsupported platform.');
+      setLoading(false);
+      setListenerFailed(true);
+      return;
+    }
 
     WebMidi.enable().then(() => {
       // Initialise Synthesizer
