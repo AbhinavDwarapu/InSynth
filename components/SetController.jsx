@@ -50,7 +50,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
         boxShadow="lg"
         transform="translate(+22px, 0px)"
       >
-        Set Controler
+        Set Controller
       </Box>
       <Grid textAlign="center" flexGrow="1">
         <GridItem margin="auto" mb={2}>

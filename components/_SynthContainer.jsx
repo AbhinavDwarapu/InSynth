@@ -39,7 +39,6 @@ export default function SynthContainer({ listenerFailId }) {
 
     WebMidi.enable().then(() => {
       // Initialise Synthesizer
-
       const list = [];
       WebMidi.inputs.forEach((device) => {
         list.push(device.name);
@@ -107,16 +106,16 @@ export default function SynthContainer({ listenerFailId }) {
   if (listenerFailed) {
     if (lFailId.current) {
       toast.update(lFailId.current, {
-        title: 'Select a Controller',
-        description: 'Please set your controller and channel in the controller panel',
+        title: 'Select a Controller in the Set Controller Panel.',
+        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
         status: 'warning',
         duration: 9000,
         isClosable: true,
       });
     } else {
       lFailId.current = toast({
-        title: 'Select a Controller',
-        description: 'Please set your controller and channel in the controller panel',
+        title: 'Select a Controller in the Set Controller Panel.',
+        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
         status: 'warning',
         duration: 9000,
         isClosable: true,
