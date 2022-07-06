@@ -38,6 +38,7 @@ export default function SynthContainer({ listenerFailId }) {
     const WebSynth = new Synthesizer();
 
     // For keyboard support
+    // TODO: event.repeat as been depreciated
     document.addEventListener('keydown', (event) => {
       const name = mapKeyToNote(event.key);
       if (event.repeat || name === -1) return;
