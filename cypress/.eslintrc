@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "airbnb",
-    "next/core-web-vitals"
-  ],
-  "rules": {
-    "react/jsx-no-undef": [0]
-  }
-}
