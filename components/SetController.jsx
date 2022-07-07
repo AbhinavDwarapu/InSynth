@@ -36,38 +36,39 @@ export default function SetController({ setInput, setChannel, inputList }) {
   setChannel(input.value);
 
   return (
-    <Flex direction="column" width={256} height={256}>
-      <Box
-        textColor="custom.900"
-        fontSize="lg"
-        alignItems="center"
-        justifyContent="center"
-        display="flex"
-        height={8}
-        bg="custom.100"
-        roundedBottom="lg"
-        w={210}
-        boxShadow="lg"
-        transform="translate(+22px, 0px)"
-      >
-        Set Controller
-      </Box>
-      <Grid textAlign="center" flexGrow="1">
-        <GridItem margin="auto" mb={2}>
-          <Select textColor="custom.900" borderColor="custom.100" colorScheme="custom" onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
-            {jsx}
-          </Select>
-        </GridItem>
-        <GridItem margin="auto" mt={2}>
-          <HStack maxW="255px" pl={4} pr={4}>
-            <Button {...dec} colorScheme="custom">-</Button>
-            <Input textColor="custom.900" borderColor="custom.100" {...input} />
-            <Button {...inc} colorScheme="custom">+</Button>
-          </HStack>
-        </GridItem>
-      </Grid>
-
-    </Flex>
+    <div id="setcontroller">
+      <Flex direction="column" width={256} height={256}>
+        <Box
+          textColor="custom.900"
+          fontSize="lg"
+          alignItems="center"
+          justifyContent="center"
+          display="flex"
+          height={8}
+          bg="custom.100"
+          roundedBottom="lg"
+          w={210}
+          boxShadow="lg"
+          transform="translate(+22px, 0px)"
+        >
+          Set Controller
+        </Box>
+        <Grid textAlign="center" flexGrow="1">
+          <GridItem margin="auto" mb={2}>
+            <Select textColor="custom.900" borderColor="custom.100" colorScheme="custom" onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
+              {jsx}
+            </Select>
+          </GridItem>
+          <GridItem margin="auto" mt={2}>
+            <HStack maxW="255px" pl={4} pr={4}>
+              <Button {...dec} colorScheme="custom">-</Button>
+              <Input textColor="custom.900" borderColor="custom.100" {...input} />
+              <Button {...inc} colorScheme="custom">+</Button>
+            </HStack>
+          </GridItem>
+        </Grid>
+      </Flex>
+    </div>
 
   );
 }
