@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 export default function BitCrusher({ synth }) {
   const [toggle, setToggle] = useState('');
-  const [bits, setBits] = useState(7);
+  const [bits, setBits] = useState(1);
 
   function handleClick(e) {
     if (toggle) {

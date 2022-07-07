@@ -22,7 +22,11 @@ release = 1;
 
 // Effects
 
+AutoWah;
+
 BitCrusher;
+
+Chebyshev;
 
 Chorus;
 
@@ -35,6 +39,14 @@ BiquadFilter;
 Compressor;
 
 Phaser;
+
+PingPongDelay;
+
+Tremolo;
+
+Vibrato;
+
+Panner3D;
 
 // Sets input and channel and adds listeners to synth
 constructor() {
@@ -60,13 +72,21 @@ synthInit(synthName) {
       break;
   }
   this.synth.maxPolyphony = 128;
-  this.synth.volume.value = 0;
+  this.synth.volume.value = -10;
 }
 
 // Create dry effects for chaining
 effectInit() {
+  this.AutoWah = new Tone.AutoWah();
+  this.AutoWah.set({
+    wet: 0,
+  });
   this.BitCrusher = new Tone.BitCrusher();
   this.BitCrusher.set({
+    wet: 0,
+  });
+  this.Chebyshev = new Tone.Chebyshev();
+  this.Chebyshev.set({
     wet: 0,
   });
   this.Chorus = new Tone.Chorus().start();
@@ -77,13 +97,26 @@ effectInit() {
   this.Distortion.set({
     wet: 0,
   });
+
   this.Reverb = new Tone.Reverb();
   this.Reverb.set({
     wet: 0,
   });
-
+  this.Panner3D = new Tone.Panner3D(0, 0, 0);
   this.Phaser = new Tone.Phaser();
   this.Phaser.set({
+    wet: 0,
+  });
+  this.PingPongDelay = new Tone.PingPongDelay();
+  this.PingPongDelay.set({
+    wet: 0,
+  });
+  this.Tremolo = new Tone.Tremolo().start();
+  this.Tremolo.set({
+    wet: 0,
+  });
+  this.Vibrato = new Tone.Vibrato();
+  this.Vibrato.set({
     wet: 0,
   });
 }
@@ -129,12 +162,17 @@ setEffects() {
 // Compressor has no wet or dry
 chainEffects() {
   this.synth.chain(
+    this.AutoWah,
     this.BitCrusher,
+    this.Chebyshev,
     this.Chorus,
     this.Distortion,
     this.Reverb,
     this.Phaser,
-    // this.Compressor,
+    this.PingPongDelay,
+    this.Tremolo,
+    this.Vibrato,
+    this.Panner3D,
     Tone.Destination,
   );
 }
