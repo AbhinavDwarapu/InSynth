@@ -66,7 +66,7 @@ export default function ADSREnvelope({ synth }) {
       </Flex>
       <Flex direction="row" flexGrow="1" pb={4}>
         <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
+        <Slider id="attackslider" colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
           <SliderTrack bg="custom.100">
             <SliderFilledTrack />
           </SliderTrack>

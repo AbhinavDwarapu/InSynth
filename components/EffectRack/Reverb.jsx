@@ -44,20 +44,23 @@ export default function Reverb({ synth }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-      <Box textColor="custom.900" textAlign="center">Reverb Effect</Box>
-      <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
-      <Box textColor="custom.900" textAlign="left" fontSize="sm">Decay</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleDecay}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{decay.toFixed(2)}</Box>
-      </HStack>
+    <div id="reverb">
+      <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+        <Box textColor="custom.900" textAlign="center">Reverb Effect</Box>
+        <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
+        <Box textColor="custom.900" textAlign="left" fontSize="sm">Decay</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" defaultValue={0.01} min={0.01} max={5} step={0.05} onChange={handleDecay}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{decay.toFixed(2)}</Box>
+        </HStack>
 
-    </Flex>
+      </Flex>
+    </div>
+
   );
 }

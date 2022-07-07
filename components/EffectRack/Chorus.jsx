@@ -93,64 +93,67 @@ export default function Chorus({ synth }) {
   }
 
   return (
-    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-      <Box textColor="custom.900" textAlign="center">Chorus Effect</Box>
-      <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
-      <Box textColor="custom.900" fontSize="sm">Frequency</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency.toFixed(1)}</Box>
-      </HStack>
+    <div id="chorus">
+      <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+        <Box textColor="custom.900" textAlign="center">Chorus Effect</Box>
+        <Switch id="chorusbtn" mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
+        <Box textColor="custom.900" fontSize="sm">Frequency</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency.toFixed(1)}</Box>
+        </HStack>
 
-      <Box textColor="custom.900" fontSize="sm">Delay</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={1000} onChange={handleDelay}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
-      </HStack>
+        <Box textColor="custom.900" fontSize="sm">Delay</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={1000} onChange={handleDelay}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
+        </HStack>
 
-      <Box textColor="custom.900" fontSize="sm">Depth</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
-      </HStack>
+        <Box textColor="custom.900" fontSize="sm">Depth</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
+        </HStack>
 
-      <Box textColor="custom.900" fontSize="sm">Feedback</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={0.95} step={0.05} onChange={handleFeedback}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
-      </HStack>
+        <Box textColor="custom.900" fontSize="sm">Feedback</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={0.95} step={0.05} onChange={handleFeedback}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
+        </HStack>
 
-      <Box textColor="custom.900" fontSize="sm">Spread</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={180} onChange={handleSpread}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
-      </HStack>
+        <Box textColor="custom.900" fontSize="sm">Spread</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={180} onChange={handleSpread}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
+        </HStack>
 
-    </Flex>
+      </Flex>
+    </div>
+
   );
 }

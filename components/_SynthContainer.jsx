@@ -134,7 +134,7 @@ export default function SynthContainer({ listenerFailId }) {
         title: 'Select a Controller in the Set Controller Panel.',
         description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
         status: 'warning',
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
       });
     } else {
@@ -142,7 +142,7 @@ export default function SynthContainer({ listenerFailId }) {
         title: 'Select a Controller in the Set Controller Panel.',
         description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
         status: 'warning',
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
       });
     }
