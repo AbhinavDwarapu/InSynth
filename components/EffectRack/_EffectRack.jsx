@@ -7,6 +7,12 @@ import Chorus from './Chorus';
 import Distortion from './Distortion';
 import Reverb from './Reverb';
 import Phaser from './Phaser';
+import Chebyshev from './Chebyshev';
+import PingPongDelay from './PingPongDelay';
+import Tremolo from './Tremolo';
+import Vibrato from './Vibrato';
+import AutoWah from './AutoWah';
+import Panner3D from './Panner3D';
 
 export default function EffectRack({ synth }) {
   return (
@@ -28,7 +34,13 @@ export default function EffectRack({ synth }) {
       </Box>
 
       <Box>
+        <AutoWah synth={synth} />
+      </Box>
+      <Box>
         <BitCrusher synth={synth} />
+      </Box>
+      <Box>
+        <Chebyshev synth={synth} />
       </Box>
       <Box>
         <Chorus synth={synth} />
@@ -42,7 +54,18 @@ export default function EffectRack({ synth }) {
       <Box>
         <Phaser synth={synth} />
       </Box>
-
+      <Box>
+        <PingPongDelay synth={synth} />
+      </Box>
+      <Box>
+        <Tremolo synth={synth} />
+      </Box>
+      <Box>
+        <Vibrato synth={synth} />
+      </Box>
+      <Box>
+        <Panner3D synth={synth} />
+      </Box>
     </VStack>
   );
 }
