@@ -60,7 +60,7 @@ synthInit(synthName) {
       break;
   }
   this.synth.maxPolyphony = 128;
-  this.synth.volume.value = -10;
+  this.synth.volume.value = 0;
 }
 
 // Create dry effects for chaining
@@ -156,13 +156,13 @@ set decay(decay) {
   this.setEffects();
 }
 
-// Set sustainthis.chainEffects();
+// Set sustain
 /**
    * @param {number} sustain
    */
 set sustain(sustain) {
   this.sustain = sustain;
-  this.setEffects(); this.chainEffects();
+  this.setEffects();
 }
 
 // Set release

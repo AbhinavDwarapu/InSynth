@@ -37,76 +37,79 @@ export default function ADSREnvelope({ synth }) {
   }
 
   return (
-    <Flex direction="column" width={256} height={256} flexGrow="1">
-      <Box
-        textColor="custom.900"
-        fontSize="lg"
-        alignItems="center"
-        justifyContent="center"
-        display="flex"
-        height={8}
-        bg="custom.100"
-        roundedBottom="lg"
-        w={210}
-        boxShadow="lg"
-        transform="translate(+22px, 0px)"
-      >
-        ADSR Envelope
-      </Box>
-      <Flex direction="row" mt={5} mb={3} textAlign="center">
-        <Spacer />
-        <Text textColor="custom.900" w="20%">Attack</Text>
-        <Spacer />
-        <Text textColor="custom.900" w="20%">Decay</Text>
-        <Spacer />
-        <Text textColor="custom.900" w="20%">Sus.</Text>
-        <Spacer />
-        <Text textColor="custom.900" w="20%">Rel.</Text>
-        <Spacer />
-      </Flex>
-      <Flex direction="row" flexGrow="1" pb={4}>
-        <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
-          <SliderTrack bg="custom.100">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay}>
-          <SliderTrack bg="custom.100">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain}>
-          <SliderTrack bg="custom.100">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Spacer />
-        <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease}>
-          <SliderTrack bg="custom.100">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Spacer />
-      </Flex>
-      <Flex direction="row" mb={3}>
-        <Spacer />
-        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
-        <Spacer />
-        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
-        <Spacer />
-        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
-        <Spacer />
-        <Box textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
-        <Spacer />
-      </Flex>
+    <div id="ADSREnvelope">
+      <Flex direction="column" width={256} height={256} flexGrow="1">
+        <Box
+          textColor="custom.900"
+          fontSize="lg"
+          alignItems="center"
+          justifyContent="center"
+          display="flex"
+          height={8}
+          bg="custom.100"
+          roundedBottom="lg"
+          w={210}
+          boxShadow="lg"
+          transform="translate(+22px, 0px)"
+        >
+          ADSR Envelope
+        </Box>
+        <Flex direction="row" mt={5} mb={3} textAlign="center">
+          <Spacer />
+          <Text textColor="custom.900" w="20%">Attack</Text>
+          <Spacer />
+          <Text textColor="custom.900" w="20%">Decay</Text>
+          <Spacer />
+          <Text textColor="custom.900" w="20%">Sus.</Text>
+          <Spacer />
+          <Text textColor="custom.900" w="20%">Rel.</Text>
+          <Spacer />
+        </Flex>
+        <Flex direction="row" flexGrow="1" pb={4}>
+          <Spacer />
+          <Slider id="attackslider" colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
+            <SliderTrack bg="custom.100">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Spacer />
+          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay}>
+            <SliderTrack bg="custom.100">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Spacer />
+          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain}>
+            <SliderTrack bg="custom.100">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Spacer />
+          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease}>
+            <SliderTrack bg="custom.100">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Spacer />
+        </Flex>
+        <Flex direction="row" mb={3}>
+          <Spacer />
+          <Box id="attackval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
+          <Spacer />
+          <Box id="decayval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
+          <Spacer />
+          <Box id="sustainval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
+          <Spacer />
+          <Box id="releaseval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
+          <Spacer />
+        </Flex>
 
-    </Flex>
+      </Flex>
+    </div>
+
   );
 }

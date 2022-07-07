@@ -71,32 +71,35 @@ export default function Distortion({ synth }) {
     synth.chainEffects();
   }
   return (
-    <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-      <Box textColor="custom.900" textAlign="center">Distortion Effect</Box>
-      <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
-      <Box textColor="custom.900" textAlign="left" fontSize="sm">Distortion</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{distort.toFixed(1)}</Box>
-      </HStack>
-      <Box textColor="custom.900" textAlign="left" fontSize="sm">Over Sample</Box>
-      <HStack>
-        <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample}>
-          <SliderTrack bg="custom.50">
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
-          {overSample}
-          x
-        </Box>
-      </HStack>
-    </Flex>
+    <div id="distortion">
+      <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
+        <Box textColor="custom.900" textAlign="center">Distortion Effect</Box>
+        <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
+        <Box textColor="custom.900" textAlign="left" fontSize="sm">Distortion</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{distort.toFixed(1)}</Box>
+        </HStack>
+        <Box textColor="custom.900" textAlign="left" fontSize="sm">Over Sample</Box>
+        <HStack>
+          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample}>
+            <SliderTrack bg="custom.50">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
+            {overSample}
+            x
+          </Box>
+        </HStack>
+      </Flex>
+    </div>
+
   );
 }
