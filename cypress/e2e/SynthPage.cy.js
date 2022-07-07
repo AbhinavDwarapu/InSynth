@@ -14,6 +14,18 @@ describe('Use Keyboard as Piano', () => {
 });
 
 describe('Effect Panel: Test and Play Each Effect', () => {
+  it('Valid Test: Play AutoWah Effect', () => {
+    cy.get('div[id=autowah]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(2).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=autowah]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
   it('Valid Test: Play BitCrusher Effect', () => {
     cy.get('div[id=bitcrusher]').within(() => {
       // Enable bitcrusher
@@ -24,6 +36,17 @@ describe('Effect Panel: Test and Play Each Effect', () => {
     cy.get('body').type('asdfghjk', { delay: pianoDelay });
     // Disable bitcrusher
     cy.get('div[id=bitcrusher]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
+  it('Valid Test: Play AutoWah Effect', () => {
+    cy.get('div[id=chebyshev]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=chebyshev]').within(() => {
       cy.get('input').eq(0).click({ force: true });
     });
   });
@@ -78,6 +101,51 @@ describe('Effect Panel: Test and Play Each Effect', () => {
     cy.get('body').eq(0).type('asdfghjk', { delay: pianoDelay });
 
     cy.get('div[id=phaser]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
+  it('Valid Test: Play Ping Pong Delay Effect', () => {
+    cy.get('div[id=pingpongdelay]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=pingpongdelay]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
+  it('Valid Test: Play Tremolo Effect', () => {
+    cy.get('div[id=tremolo]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=tremolo]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
+  it('Valid Test: Play Vibrato Effect', () => {
+    cy.get('div[id=vibrato]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=vibrato]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+    });
+  });
+  it('Valid Test: Play Panner3D Effect', () => {
+    cy.get('div[id=panner3d]').within(() => {
+      cy.get('input').eq(0).click({ force: true });
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(1).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+      cy.get('[role="slider"]').eq(2).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+    cy.get('div[id=panner3d]').within(() => {
       cy.get('input').eq(0).click({ force: true });
     });
   });
