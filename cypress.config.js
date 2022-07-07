@@ -6,7 +6,14 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     e2e: {
-      baseUrl: 'https://in-synth.vercel.app',
+      baseUrl: 'http://localhost:3000',
+    },
+  },
+
+  component: {
+    devServer: {
+      framework: 'next',
+      bundler: 'webpack',
     },
   },
 });
