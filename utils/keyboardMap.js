@@ -16,6 +16,12 @@ function mapKeyToNote(key) {
       return 'B4';
     case 'k':
       return 'C5';
+    case 'i':
+      return 374;
+    case 'o':
+      return 375;
+    case 'p':
+      return 376;
     default:
       return -1;
   }
