@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 import { Box, Skeleton } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -13,6 +15,7 @@ export default function Graph({ synth }) {
     if (synth) {
       setLoading(false);
       context = canvas.current.getContext('2d');
+
       draw();
     } else {
       setLoading(true);
