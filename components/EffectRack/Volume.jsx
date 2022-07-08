@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import {
   Switch,
   Slider,
@@ -11,16 +13,14 @@ import {
 
 import React, { useState } from 'react';
 
-export default function Vibrato({ synth, encoder }) {
+export default function Volume({ synth, encoder }) {
   const [volume, setVolume] = useState(-5);
   const [dialVolume, setDialVolume] = useState(encoder);
 
   function handleVolume(e) {
     setVolume(e);
-    synth.Volume.set({
-      volume: e,
-    });
-    synth.chainEffects();
+
+    synth.synth.volume.value = e;
   }
 
   if (encoder !== dialVolume) {
