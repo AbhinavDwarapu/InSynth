@@ -6,7 +6,8 @@ describe('Check Link', () => {
   });
 });
 
-const pianoDelay = 100;
+// Lower if testing run time is important, increase to test how the effect sounds
+const pianoDelay = 50;
 describe('Use Keyboard as Piano', () => {
   it('Valid Test: Press Keys to Play Piano: \'asdfghjk\'', () => {
     cy.get('body').type('asdfghjk', { delay: pianoDelay });
@@ -14,6 +15,12 @@ describe('Use Keyboard as Piano', () => {
 });
 
 describe('Effect Panel: Test and Play Each Effect', () => {
+  it('Valid Test: Play Volume Effect', () => {
+    cy.get('div[id=volume]').within(() => {
+      cy.get('[role="slider"]').eq(0).click().type('{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}{rightArrow}', { force: true });
+    });
+    cy.get('body').type('asdfghjk', { delay: pianoDelay });
+  });
   it('Valid Test: Play AutoWah Effect', () => {
     cy.get('div[id=autowah]').within(() => {
       cy.get('input').eq(0).click({ force: true });

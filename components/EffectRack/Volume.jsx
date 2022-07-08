@@ -23,7 +23,7 @@ export default function Vibrato({ synth }) {
   }
 
   return (
-    <div id="vibrato">
+    <div id="volume">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
         <Box textColor="custom.900" textAlign="center">Volume Effect</Box>
         <Switch mt={1} colorScheme="custom" textAlign="center" isChecked isDisabled />
