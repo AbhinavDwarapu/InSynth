@@ -4,7 +4,7 @@ import { Box, Skeleton } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
 const canvasWidth = 516;
-const canvasHeight = 256;
+const canvasHeight = 246;
 
 export default function Graph({ synth }) {
   const [isLoading, setLoading] = useState(true);

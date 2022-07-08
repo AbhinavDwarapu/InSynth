@@ -31,6 +31,8 @@ export default function SynthContainer({ listenerFailId }) {
   const [synth, setSynth] = useState(null);
   const [inputList, setInputList] = useState([]);
 
+  const [runOnce, setRunOnce] = useState(false);
+
   const [listenerFailed, setListenerFailed] = useState(false);
 
   useEffect(() => {
@@ -39,17 +41,19 @@ export default function SynthContainer({ listenerFailId }) {
 
     // For keyboard support
     // event.repeat broken in X11/Wayland Firefox environments
-    document.addEventListener('keydown', (event) => {
-      const name = mapKeyToNote(event.key);
-      if (event.repeat || name === -1) return;
-      WebSynth.triggerAttackCallback(name, 1);
-    }, false);
-
-    document.addEventListener('keyup', (event) => {
-      const name = mapKeyToNote(event.key);
-      if (name === -1) return;
-      WebSynth.triggerReleaseCallback(name);
-    }, false);
+    if (runOnce) {
+      document.addEventListener('keydown', (e) => {
+        const name = mapKeyToNote(e.key);
+        if (e.repeat || name === -1) return;
+        WebSynth.triggerAttackCallback(name, 1);
+      });
+      document.addEventListener('keyup', (e) => {
+        const name = mapKeyToNote(e.key);
+        if (name === -1) return;
+        WebSynth.triggerReleaseCallback(name);
+      });
+    }
+    setRunOnce(true);
 
     if (WebMidi.supported === undefined || WebMidi.supported === false) {
       console.log('Unsupported platform.');
