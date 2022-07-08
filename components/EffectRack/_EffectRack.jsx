@@ -15,7 +15,7 @@ import AutoWah from './AutoWah';
 import Panner3D from './Panner3D';
 import Volume from './Volume';
 
-export default function EffectRack({ synth }) {
+export default function EffectRack({ synth, encoder }) {
   return (
     <VStack align="stretch" spacing="24px" mb={5}>
       <Box
@@ -35,7 +35,7 @@ export default function EffectRack({ synth }) {
       </Box>
 
       <Box>
-        <Volume synth={synth} />
+        <Volume synth={synth} encoder={encoder} />
       </Box>
       <Box>
         <AutoWah synth={synth} />

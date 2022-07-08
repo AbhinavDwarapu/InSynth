@@ -173,6 +173,7 @@ export default function SynthContainer({ listenerFailId }) {
         <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
           <EffectRack
             synth={synth}
+            encoder={encoder}
           />
         </GridItem>
         <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">

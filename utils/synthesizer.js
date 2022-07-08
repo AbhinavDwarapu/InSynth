@@ -48,7 +48,7 @@ Tremolo;
 
 Vibrato;
 
-Volume
+Volume;
 
 // Sets input and channel and adds listeners to synth
 constructor() {
