@@ -1,10 +1,11 @@
 import * as Tone from 'tone';
 
 // Initialise Synthesizer and set a channel and input for ToneJS
-//
 
 export default class Synthesizer {
 synth;
+
+wave;
 
 controller;
 
@@ -121,6 +122,10 @@ effectInit() {
     wet: 0,
   });
   this.Volume = new Tone.Volume(-5);
+  this.wave = new Tone.Analyser('waveform', 1024);
+  this.wave.set({
+    smoothing: 1,
+  });
 }
 
 // Trigger synth noteon
@@ -175,7 +180,9 @@ chainEffects() {
     this.Tremolo,
     this.Vibrato,
     this.Panner3D,
+
     this.Volume,
+    this.wave,
     Tone.Destination,
   );
 }
