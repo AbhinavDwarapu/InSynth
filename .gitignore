@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# vscode
+# IDE specific
 .vscode
+.idea
 
 # dependencies
 /node_modules
