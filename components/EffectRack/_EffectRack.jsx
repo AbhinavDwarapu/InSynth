@@ -13,6 +13,7 @@ import Tremolo from './Tremolo';
 import Vibrato from './Vibrato';
 import AutoWah from './AutoWah';
 import Panner3D from './Panner3D';
+import Volume from './Volume';
 
 export default function EffectRack({ synth }) {
   return (
@@ -33,6 +34,9 @@ export default function EffectRack({ synth }) {
         Effect Rack
       </Box>
 
+      <Box>
+        <Volume synth={synth} />
+      </Box>
       <Box>
         <AutoWah synth={synth} />
       </Box>

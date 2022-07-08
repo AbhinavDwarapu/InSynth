@@ -38,6 +38,8 @@ BiquadFilter;
 
 Compressor;
 
+Panner3D;
+
 Phaser;
 
 PingPongDelay;
@@ -46,7 +48,7 @@ Tremolo;
 
 Vibrato;
 
-Panner3D;
+Volume
 
 // Sets input and channel and adds listeners to synth
 constructor() {
@@ -72,7 +74,6 @@ synthInit(synthName) {
       break;
   }
   this.synth.maxPolyphony = 128;
-  this.synth.volume.value = -10;
 }
 
 // Create dry effects for chaining
@@ -119,6 +120,7 @@ effectInit() {
   this.Vibrato.set({
     wet: 0,
   });
+  this.Volume = new Tone.Volume(-5);
 }
 
 // Trigger synth noteon
@@ -173,6 +175,7 @@ chainEffects() {
     this.Tremolo,
     this.Vibrato,
     this.Panner3D,
+    this.Volume,
     Tone.Destination,
   );
 }
