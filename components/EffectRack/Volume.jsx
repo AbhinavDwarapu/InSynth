@@ -9,10 +9,11 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function Vibrato({ synth }) {
+export default function Vibrato({ synth, encoder }) {
   const [volume, setVolume] = useState(-5);
+  const [dialVolume, setDialVolume] = useState(encoder);
 
   function handleVolume(e) {
     setVolume(e);
@@ -20,6 +21,16 @@ export default function Vibrato({ synth }) {
       volume: e,
     });
     synth.chainEffects();
+  }
+
+  if (encoder !== dialVolume) {
+    setDialVolume(encoder);
+
+    if (encoder === 0) {
+      setVolume(-100);
+    } else {
+      setVolume((Math.log(encoder) * 20).toFixed(0));
+    }
   }
 
   return (
