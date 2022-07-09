@@ -12,13 +12,12 @@ export default function Home() {
         <meta name="A Web Synth" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Center height="100vh" flexDirection="column" bg="custom.background" pt={32}>
         <Heading fontSize="6xl" color="custom.900">
           InSynth
         </Heading>
         <Text color="custom.600" pb={32} fontSize="2xl">
-          a midi controllable internet synthesizer.
+          a midi and keyboard controllable synthesizer.
         </Text>
         <VStack spacing={2} align="center">
           <Link href="/synth" passHref>
@@ -35,7 +34,6 @@ export default function Home() {
 
         </VStack>
       </Center>
-
     </>
   );
 }
