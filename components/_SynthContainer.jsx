@@ -137,16 +137,16 @@ export default function SynthContainer({ listenerFailId }) {
     if (lFailId.current) {
       toast.update(lFailId.current, {
         title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
-        status: 'warning',
+        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
+        status: 'info',
         duration: 5000,
         isClosable: true,
       });
     } else {
       lFailId.current = toast({
         title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
-        status: 'warning',
+        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
+        status: 'success',
         duration: 5000,
         isClosable: true,
       });
