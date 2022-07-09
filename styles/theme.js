@@ -21,15 +21,16 @@ const theme = extendTheme({
 
       // Pink Theme
       background: 'linear-gradient(to top right, #F9ACFB 0%, #FF9966 100%)',
+      invbackground: 'linear-gradient(to top right, #FF9966 0%, #F9ACFB 100%)',
       50: '#ffe3fa', // PANEL BACKGROUND
       100: '#fcc0f0', // EFFECT PANEL BACKGROUNDS, TITLE BACKGROUND, PITCHBEND BACKGROUND
       200: '#f2b3f8', // DATA DISPLAY
-      300: '#a6a6a6',
-      400: '#8c8c8c',
+      300: '#f399ff',
+      400: '#f58fff',
       500: '#bf80c4', // SWITCH, SLIDER TRACK, +- BUTTON, PROGRESS FILL, INACTIVE BUTTON
       600: '#ae5cb2', // +- BUTTON ACTIVE
       700: '#8e3b91', // ACTIVE BUTTON
-      800: '#262626',
+      800: '#7b2b7e',
       900: '#3b173d', // TEXT COLOUR
     },
 
