@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import {
   Grid,
   GridItem,
@@ -41,7 +43,6 @@ export default function SynthContainer({ listenerFailId }) {
     const WebSynth = new Synthesizer();
 
     // For keyboard support
-    // event.repeat broken in X11/Wayland Firefox environments
     if (runOnce) {
       document.addEventListener('keydown', (e) => {
         const name = mapKeyToNote(e.key);
@@ -123,7 +124,7 @@ export default function SynthContainer({ listenerFailId }) {
     setLoading(false);
 
     // Create input list for set controller component
-  }, [channel, input]);
+  }, [channel, input, runOnce]);
 
   if (isLoading) {
     return (
@@ -137,16 +138,16 @@ export default function SynthContainer({ listenerFailId }) {
     if (lFailId.current) {
       toast.update(lFailId.current, {
         title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
-        status: 'warning',
+        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
+        status: 'info',
         duration: 5000,
         isClosable: true,
       });
     } else {
       lFailId.current = toast({
         title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Your web browser may not support Web Midi but you can still play using a qwerty keyboard layout! (Use the row starting with asdf...)',
-        status: 'warning',
+        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
+        status: 'success',
         duration: 5000,
         isClosable: true,
       });

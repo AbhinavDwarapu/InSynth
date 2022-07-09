@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { Box, Skeleton } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
@@ -20,7 +21,7 @@ export default function Graph({ synth }) {
     } else {
       setLoading(true);
     }
-  });
+  }, [synth, draw]);
 
   function draw() {
     requestAnimationFrame(draw);
