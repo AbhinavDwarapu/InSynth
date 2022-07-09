@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [appTheme, setTheme] = useState(theme);
   useEffect(() => {
     setTheme(theme);
-  });
+  }, []);
 
   return (
     <ChakraProvider theme={appTheme}>
