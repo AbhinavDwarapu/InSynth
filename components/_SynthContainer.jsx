@@ -4,6 +4,7 @@ import {
   Skeleton,
   useToast,
   Square,
+  ScaleFade,
 } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
@@ -162,40 +163,45 @@ export default function SynthContainer({ listenerFailId }) {
       minW={840}
       minH={800}
     >
-      <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <DataPanel
-            note={notePlayed}
-            pitchbend={pitchBend}
-            encoder={encoder}
-            midiData={midiData}
-          />
-        </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <SynthSelector synth={synth} />
-        </GridItem>
-        <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
-          <EffectRack
-            synth={synth}
-            encoder={encoder}
-          />
-        </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <SetController
-            inputList={inputList}
-            input={input}
-            channel={channel}
-            setInput={setInput}
-            setChannel={setChannel}
-          />
-        </GridItem>
-        <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-          <ADSREnvelope synth={synth} />
-        </GridItem>
-        <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
-          <Graph synth={synth} />
-        </GridItem>
-      </Grid>
+      <Skeleton isLoaded={!isLoading} startColor="custom.50" endColor="custom.200">
+        <ScaleFade initialScale={0.5} in bg="custom.background">
+          <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
+            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
+              <DataPanel
+                note={notePlayed}
+                pitchbend={pitchBend}
+                encoder={encoder}
+                midiData={midiData}
+              />
+            </GridItem>
+            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
+              <SynthSelector synth={synth} />
+            </GridItem>
+            <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
+              <EffectRack
+                synth={synth}
+                encoder={encoder}
+              />
+            </GridItem>
+            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
+              <SetController
+                inputList={inputList}
+                input={input}
+                channel={channel}
+                setInput={setInput}
+                setChannel={setChannel}
+              />
+            </GridItem>
+            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
+              <ADSREnvelope synth={synth} />
+            </GridItem>
+            <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
+              <Graph synth={synth} />
+            </GridItem>
+          </Grid>
+        </ScaleFade>
+      </Skeleton>
+
     </Square>
 
   );
