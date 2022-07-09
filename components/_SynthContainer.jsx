@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import {
   Grid,
   GridItem,
@@ -41,7 +43,6 @@ export default function SynthContainer({ listenerFailId }) {
     const WebSynth = new Synthesizer();
 
     // For keyboard support
-    // event.repeat broken in X11/Wayland Firefox environments
     if (runOnce) {
       document.addEventListener('keydown', (e) => {
         const name = mapKeyToNote(e.key);
@@ -123,7 +124,7 @@ export default function SynthContainer({ listenerFailId }) {
     setLoading(false);
 
     // Create input list for set controller component
-  }, [channel, input]);
+  }, [channel, input, runOnce]);
 
   if (isLoading) {
     return (
