@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# InSynth
 
-First, run the development server:
+A web synthesizer that can be played using a real midi controller or a keyboard. It can display the currently recorded midi message and play it using ToneJS to emulate a synthesizer. The framework used is NextJS and the frontend is created using ReactJS. WebMidiJS was used to capture midi inputs and the project was tested using Cypress for end to end testing. 
+
+The project is currently hosted on [in-synth.vercel.app/synth](in-synth.vercel.app/synth).
+
+## How to Use InSynth
+
+There are currently two ways of playing the synthesizer:
+
+1. With a keyboard, use the keys `` a s d f g h j k `` to play notes C4 to B5. Use the keys `` i o p `` to play a note that matches the framerate of the graph to more easily view how each effect works.
+
+2. With a midi controller, plug it in and ensure you are using a [compatible browser](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess#browser_compatibility). Then it should appear in the "Set Controller" panel where you can select it. That's all!
+
+The Data Panel shows the values received by InSynth if you are using a midi controller.
+
+The Select Synth panel lets you pick from an AMSynth or a FMSynth. 
+
+The Set Controller panel lets you pick a midi controller (if it is detected).
+
+The ADSR Envelope panel lets you change the attack, decay, sustain and release of each note played.
+
+The Graph panel shows an "oscilloscope" type representation of the notes being played.
+
+The Effects Rack lets you pick and change different effects.
+
+## How to Build
+
+Ensure you have the latest [NodeJS](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install) installed.
+
+Download the project and cd into it. Then run
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
+or 
+```bash
+npm run dev
+```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+which will run the development server.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result, playing using a keyboard works on all browsers (except Firefox/Linux, see below) however the Web Midi api is only supported on [these](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess#browser_compatibility) platforms. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Known Bugs
+- Sometimes keys can be "sticky" and notes will continue to play even after letting go
+- Playing too many keys too quickly can really slow down the Synth
+- Changing channel, creates a new synth, leading to a lot of static noise
+- Change synth type reinitialises all effects to default values
+- Linux/Firefox currently has a broken implementation of event.repeat so keydown events keep firing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Future Goals
+- A theming system
+- Effect panel to change the synth properties (sine wave, square, etc.)
+- Ability to save settings to localstorage
+- Tablet/Mobile layouts
+- Fixing the bugs above!
