@@ -52,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Future Goals
 - A theming system
-- Effect panel to change the synth properties (sine wave, square, etc.)
+- More effects / properties to change
 - Ability to save settings to localstorage
 - Tablet/Mobile layouts
 - Fixing the bugs above!
