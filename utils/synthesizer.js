@@ -137,6 +137,12 @@ triggerReleaseCallback(note) {
   this.synth.triggerRelease(note);
 }
 
+// Trigger synth noteon and noteoff
+triggerAttackReleaseCallback(note, dur) {
+  this.setEffects();
+  this.synth.triggerAttackRelease(note, dur);
+}
+
 // Detune synth
 setDetuneCallback(e) {
   this.setEffects();
