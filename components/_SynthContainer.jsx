@@ -47,13 +47,13 @@ export default function SynthContainer({ listenerFailId }) {
       document.addEventListener('keydown', (e) => {
         const name = mapKeyToNote(e.key);
         if (e.repeat || name === -1) return;
-        WebSynth.triggerAttackCallback(name, 1);
+        WebSynth.triggerAttackReleaseCallback(name, '16n');
       });
-      document.addEventListener('keyup', (e) => {
-        const name = mapKeyToNote(e.key);
-        if (name === -1) return;
-        WebSynth.triggerReleaseCallback(name);
-      });
+      // document.addEventListener('keyup', (e) => {
+      //   const name = mapKeyToNote(e.key);
+      //   if (name === -1) return;
+      //   WebSynth.triggerReleaseCallback(name);
+      // });
     }
     setRunOnce(true);
 
