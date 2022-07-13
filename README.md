@@ -44,7 +44,6 @@ which will run the development server.
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result, playing using a keyboard works on all browsers (except Firefox/Linux, see below) however the Web Midi api is only supported on [these](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess#browser_compatibility) platforms. 
 
 ## Known Bugs
-- Sometimes keys can be "sticky" and notes will continue to play even after letting go
 - Playing too many keys too quickly can really slow down the Synth
 - Changing channel, creates a new synth, leading to a lot of static noise
 - Change synth type reinitialises all effects to default values
