@@ -125,7 +125,13 @@ export default function SynthContainer({ listenerFailId }) {
         return;
       }
       setSynth(WebSynth);
-    });
+    })
+      .catch((err) => {
+        console.log("Web Midi could not be enabled.", err);
+        showControllerToast();
+        setLoading(false);
+        setSynth(WebSynth);
+      });
 
     // Load skeleton while WebMidi initialises
     setLoading(false);
