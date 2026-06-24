@@ -29,18 +29,32 @@ export default function SynthContainer({ listenerFailId }) {
 
   const [runOnce, setRunOnce] = useState(false);
 
-  const [listenerFailed, setListenerFailed] = useState(false);
-
   useEffect(() => {
     setLoading(true);
     const WebSynth = new Synthesizer();
 
+    const showControllerToast = () => {
+      const config = {
+        title: "Select a Controller in the Set Controller Panel.",
+        description:
+          "Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)",
+        type: "info",
+        duration: 5000,
+        closable: true,
+      };
+      if (lFailId.current) {
+        toaster.update(lFailId.current, config);
+      } else {
+        lFailId.current = toaster.create(config);
+      }
+    };
+
     // For keyboard support
     if (runOnce) {
-      document.addEventListener('keydown', (e) => {
+      document.addEventListener("keydown", (e) => {
         const name = mapKeyToNote(e.key);
         if (e.repeat || name === -1) return;
-        WebSynth.triggerAttackReleaseCallback(name, '16n');
+        WebSynth.triggerAttackReleaseCallback(name, "16n");
       });
       // document.addEventListener('keyup', (e) => {
       //   const name = mapKeyToNote(e.key);
@@ -51,9 +65,9 @@ export default function SynthContainer({ listenerFailId }) {
     setRunOnce(true);
 
     if (WebMidi.supported === undefined || WebMidi.supported === false) {
-      console.log('Unsupported platform.');
+      console.log("Unsupported platform.");
       setLoading(false);
-      setListenerFailed(true);
+      showControllerToast();
       setSynth(WebSynth);
       return;
     }
@@ -70,42 +84,42 @@ export default function SynthContainer({ listenerFailId }) {
       WebSynth.controller = controller;
       // No controllers
       if (list.length === 0) {
-        setListenerFailed(true);
-        console.log('No controllers detected');
+        showControllerToast();
+        console.log("No controllers detected");
         setLoading(false);
         setSynth(WebSynth);
         return;
       }
 
       if (controller === -1) {
-        setListenerFailed(true);
-        console.log('Synth did not detect controller/channel');
+        showControllerToast();
+        console.log("Synth did not detect controller/channel");
         setLoading(false);
         setSynth(WebSynth);
         return;
       }
       try {
-        controller.channels[channel].addListener('noteon', (e) => {
+        controller.channels[channel].addListener("noteon", (e) => {
           setNote(e.note.identifier);
           setMidiData(e.data.toString());
           WebSynth.triggerAttackCallback(e.note.identifier, e.velocity);
         });
-        controller.channels[channel].addListener('pitchbend', (e) => {
+        controller.channels[channel].addListener("pitchbend", (e) => {
           setPitchBend(e.value);
           setMidiData(e.data.toString());
           WebSynth.setDetuneCallback(e);
         });
-        controller.channels[channel].addListener('noteoff', (e) => {
+        controller.channels[channel].addListener("noteoff", (e) => {
           WebSynth.triggerReleaseCallback(e.note.identifier);
         });
-        controller.channels[channel].addListener('controlchange', (e) => {
+        controller.channels[channel].addListener("controlchange", (e) => {
           setEncoder(e.value);
           setMidiData(e.data.toString());
           WebSynth.setVolumeCallback(e);
         });
       } catch (e) {
-        setListenerFailed(true);
-        console.log('Controller not found. (Listeners failed)');
+        showControllerToast();
+        console.log("Controller not found. (Listeners failed)");
         setLoading(false);
         setSynth(WebSynth);
         return;
@@ -117,7 +131,7 @@ export default function SynthContainer({ listenerFailId }) {
     setLoading(false);
 
     // Create input list for set controller component
-  }, [channel, input, runOnce]);
+  }, [channel, input, runOnce, lFailId]);
 
   if (isLoading) {
     return (
@@ -125,27 +139,6 @@ export default function SynthContainer({ listenerFailId }) {
         <div>hidden content</div>
       </Skeleton>
     );
-  }
-
-  if (listenerFailed) {
-    if (lFailId.current) {
-      toaster.update(lFailId.current, {
-        title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
-        type: 'info',
-        duration: 5000,
-        closable: true,
-      });
-    } else {
-      lFailId.current = toaster.create({
-        title: 'Select a Controller in the Set Controller Panel.',
-        description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
-        type: 'info',
-        duration: 5000,
-        closable: true,
-      });
-    }
-    setListenerFailed(false);
   }
 
   return (
