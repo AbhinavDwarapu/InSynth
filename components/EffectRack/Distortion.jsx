@@ -1,13 +1,10 @@
 import {
-  Switch,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Box,
   Flex,
   HStack,
 } from '@chakra-ui/react';
+import EffectSlider from '../ui/EffectSlider';
+import EffectSwitch from '../ui/EffectSwitch';
 
 import { useState } from 'react';
 
@@ -16,7 +13,7 @@ export default function Distortion({ synth }) {
   const [distort, setDistort] = useState(0);
   const [overSample, setOverSample] = useState(0);
 
-  function handleClick(e) {
+  function handleClick(checked) {
     if (toggle) {
       synth.Distortion.set({
         wet: 0,
@@ -25,7 +22,7 @@ export default function Distortion({ synth }) {
       setToggle(false);
     } else {
       synth.Distortion.set({
-        wet: e.target.checked,
+        wet: checked,
       });
       synth.chainEffects();
       setToggle(true);
@@ -74,25 +71,15 @@ export default function Distortion({ synth }) {
     <div id="distortion">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
         <Box textColor="custom.900" textAlign="center">Distortion Effect</Box>
-        <Switch mt={1} colorScheme="custom" textAlign="center" onChange={handleClick} isChecked={toggle} />
+        <EffectSwitch mt={1} colorPalette="custom" textAlign="center" onToggle={handleClick} checked={toggle} />
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Distortion</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={5} step={0.1} onChange={handleDistort} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{distort.toFixed(1)}</Box>
         </HStack>
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Over Sample</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={4} step={2} onChange={handleSample} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
             {overSample}
             x
@@ -100,6 +87,5 @@ export default function Distortion({ synth }) {
         </HStack>
       </Flex>
     </div>
-
   );
 }

@@ -1,15 +1,9 @@
 /* eslint-disable no-console */
 
-import {
-  Grid,
-  GridItem,
-  Skeleton,
-  useToast,
-  Square,
-  ScaleFade,
-} from '@chakra-ui/react';
+import { Grid, GridItem, Skeleton, Square } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
+import { toaster } from './ui/toaster';
 import { WebMidi } from 'webmidi';
 import SynthSelector from './SynthSelector';
 import DataPanel from './DataPanel';
@@ -23,7 +17,6 @@ import mapKeyToNote from '../utils/keyboardMap';
 
 export default function SynthContainer({ listenerFailId }) {
   const lFailId = listenerFailId;
-  const toast = useToast();
   const [isLoading, setLoading] = useState(false);
   const [notePlayed, setNote] = useState('N/A');
   const [pitchBend, setPitchBend] = useState(0);
@@ -136,20 +129,20 @@ export default function SynthContainer({ listenerFailId }) {
 
   if (listenerFailed) {
     if (lFailId.current) {
-      toast.update(lFailId.current, {
+      toaster.update(lFailId.current, {
         title: 'Select a Controller in the Set Controller Panel.',
         description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
-        status: 'info',
+        type: 'info',
         duration: 5000,
-        isClosable: true,
+        closable: true,
       });
     } else {
-      lFailId.current = toast({
+      lFailId.current = toaster.create({
         title: 'Select a Controller in the Set Controller Panel.',
         description: 'Ensure your browser supports Web Midi, you can still play using a keyboard! (Check the about page for more details.)',
-        status: 'success',
+        type: 'info',
         duration: 5000,
-        isClosable: true,
+        closable: true,
       });
     }
     setListenerFailed(false);
@@ -164,9 +157,8 @@ export default function SynthContainer({ listenerFailId }) {
       minW={840}
       minH={800}
     >
-      <Skeleton isLoaded={!isLoading} startColor="custom.50" endColor="custom.200">
-        <ScaleFade initialScale={0.5} in bg="custom.background">
-          <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
+      <Skeleton loading={!!isLoading}>
+        <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
             <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
               <DataPanel
                 note={notePlayed}
@@ -199,11 +191,8 @@ export default function SynthContainer({ listenerFailId }) {
             <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
               <Graph synth={synth} />
             </GridItem>
-          </Grid>
-        </ScaleFade>
+        </Grid>
       </Skeleton>
-
     </Square>
-
   );
 }

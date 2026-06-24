@@ -1,8 +1,6 @@
 import Head from 'next/head';
 
-import {
-  Center, Button, Link, Heading, VStack, Text,
-} from '@chakra-ui/react';
+import { Center, Button, Link, Heading, VStack, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -19,15 +17,15 @@ export default function Home() {
         <Text color="custom.600" pb={32} fontSize="2xl">
           a midi and keyboard controllable synthesizer.
         </Text>
-        <VStack spacing={2} align="center">
-          <Link href="/synth" passHref>
-            <Button colorScheme="custom" rounded="full" px={6} size="lg">
+        <VStack gap={2} align="center">
+          <Link href="/synth">
+            <Button colorPalette="custom" rounded="full" px={6} size="lg">
               Get Started
             </Button>
           </Link>
 
-          <Link href="/about" passHref>
-            <Button variant="link" colorScheme="blue" size="sm">
+          <Link href="/about">
+            <Button variant='plain' colorPalette="blue" size="sm">
               Learn more
             </Button>
           </Link>

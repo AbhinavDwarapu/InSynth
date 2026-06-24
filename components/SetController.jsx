@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-no-bind */
 import {
-  Select,
-  useNumberInput,
+  NativeSelect,
   Grid,
   GridItem,
   Box,
@@ -11,29 +9,25 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+
+const clamp = (v) => Math.max(1, Math.min(16, v));
 
 export default function SetController({ setInput, setChannel, inputList }) {
-  const jsx = [];
-  inputList.forEach((name) => {
-    jsx.push(<option key={name}>{name}</option>);
-  });
+  const [channel, setLocalChannel] = useState(1);
+
+  useEffect(() => {
+    setChannel(channel);
+  }, [channel, setChannel]);
 
   function changeInput(e) {
     setInput((e.target.value).toString());
   }
 
-  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
-    step: 1,
-    defaultValue: 1,
-    min: 1,
-    max: 16,
-    precision: 0,
-  });
-
-  const inc = getIncrementButtonProps();
-  const dec = getDecrementButtonProps();
-  const input = getInputProps();
-  setChannel(input.value);
+  function handleType(e) {
+    const v = parseInt(e.target.value, 10);
+    setLocalChannel(Number.isNaN(v) ? 1 : clamp(v));
+  }
 
   return (
     <div id="setcontroller">
@@ -55,20 +49,30 @@ export default function SetController({ setInput, setChannel, inputList }) {
         </Box>
         <Grid textAlign="center" flexGrow="1">
           <GridItem margin="auto" mb={2}>
-            <Select textColor="custom.900" borderColor="custom.100" colorScheme="custom" onClick={changeInput} placeholder="Select Controller" width={56} m="auto">
-              {jsx}
-            </Select>
+            <NativeSelect.Root width={56} m="auto">
+              <NativeSelect.Field
+                textColor="custom.900"
+                borderColor="custom.100"
+                colorPalette="custom"
+                placeholder="Select Controller"
+                onChange={changeInput}
+              >
+                {inputList.map((name) => (
+                  <option key={name} value={name}>{name}</option>
+                ))}
+              </NativeSelect.Field>
+              <NativeSelect.Indicator />
+            </NativeSelect.Root>
           </GridItem>
           <GridItem margin="auto" mt={2}>
             <HStack maxW="255px" pl={4} pr={4}>
-              <Button {...dec} colorScheme="custom">-</Button>
-              <Input textColor="custom.900" borderColor="custom.100" {...input} />
-              <Button {...inc} colorScheme="custom">+</Button>
+              <Button colorPalette="custom" onClick={() => setLocalChannel((c) => clamp(c - 1))}>-</Button>
+              <Input textColor="custom.900" borderColor="custom.100" value={channel} onChange={handleType} />
+              <Button colorPalette="custom" onClick={() => setLocalChannel((c) => clamp(c + 1))}>+</Button>
             </HStack>
           </GridItem>
         </Grid>
       </Flex>
     </div>
-
   );
 }

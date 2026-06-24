@@ -1,13 +1,10 @@
 import {
-  Switch,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Flex,
   Box,
   HStack,
 } from '@chakra-ui/react';
+import EffectSlider from '../ui/EffectSlider';
+import EffectSwitch from '../ui/EffectSwitch';
 
 import { useState } from 'react';
 
@@ -16,7 +13,7 @@ export default function PingPongDelay({ synth }) {
   const [feedback, setFeedback] = useState(0);
   const [delay, setDelay] = useState(0);
 
-  function handleClick(e) {
+  function handleClick(checked) {
     if (toggle) {
       synth.PingPongDelay.set({
         wet: 0,
@@ -25,7 +22,7 @@ export default function PingPongDelay({ synth }) {
       setToggle(false);
     } else {
       synth.PingPongDelay.set({
-        wet: e.target.checked,
+        wet: checked,
       });
       synth.chainEffects();
       setToggle(true);
@@ -60,27 +57,17 @@ export default function PingPongDelay({ synth }) {
     <div id="pingpongdelay">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
         <Box textColor="custom.900" textAlign="center">PingPong Delay Effect</Box>
-        <Switch mt={1} colorScheme="custom" onChange={handleClick} isChecked={toggle} textAlign="center" />
+        <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Feedback</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleFeedback}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleFeedback} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback}</Box>
         </HStack>
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Delay</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleDelay}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleDelay} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
         </HStack>
       </Flex>

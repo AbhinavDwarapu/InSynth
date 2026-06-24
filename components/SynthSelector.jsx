@@ -1,11 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-import {
-  Grid,
-  GridItem,
-  Button,
-  Flex,
-  Box,
-} from '@chakra-ui/react';
+import { Grid, GridItem, Button, Flex, Box } from '@chakra-ui/react';
 
 import { useState } from 'react';
 
@@ -15,14 +9,10 @@ export default function SynthSelector({
   const [AMSynth, setAMSynth] = useState(true);
 
   function changeSynth(e) {
-    synth.synthInit((e.target.innerHTML).toString());
+    const name = (e.currentTarget.textContent || '').trim();
+    synth.synthInit(name);
     synth.chainEffects();
-    setAMSynth(!AMSynth);
-    if (e.target.innerHTML === 'AMSynth') {
-      setAMSynth(true);
-    } else {
-      setAMSynth(false);
-    }
+    setAMSynth(name === 'AMSynth');
   }
 
   return (
@@ -45,16 +35,15 @@ export default function SynthSelector({
         </Box>
         <Grid textAlign="center" flexGrow="1">
           <GridItem margin="auto">
-            <Button colorScheme="custom" rounded="base" isActive={AMSynth} onClick={changeSynth} width={48} margin="auto" mb={1}>
+            <Button colorPalette="custom" rounded="base" data-active={AMSynth ? '' : undefined} onClick={changeSynth} width={48} margin="auto" mb={1}>
               AMSynth
             </Button>
-            <Button colorScheme="custom" rounded="base" isActive={!AMSynth} onClick={changeSynth} width={48} margin="auto" mt={1}>
+            <Button colorPalette="custom" rounded="base" data-active={!AMSynth ? '' : undefined} onClick={changeSynth} width={48} margin="auto" mt={1}>
               FMSynth
             </Button>
           </GridItem>
         </Grid>
       </Flex>
     </div>
-
   );
 }
