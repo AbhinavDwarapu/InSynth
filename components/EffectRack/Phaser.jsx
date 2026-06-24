@@ -1,13 +1,10 @@
 import {
-  Switch,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Flex,
   Box,
   HStack,
 } from '@chakra-ui/react';
+import EffectSlider from '../ui/EffectSlider';
+import EffectSwitch from '../ui/EffectSwitch';
 import { useState } from 'react';
 
 export default function Phaser({ synth }) {
@@ -16,7 +13,7 @@ export default function Phaser({ synth }) {
   const [octaves, setOctaves] = useState(0);
   const [baseFreq, setBaseFreq] = useState(0);
 
-  function handleClick(e) {
+  function handleClick(checked) {
     if (toggle) {
       synth.Phaser.set({
         wet: 0,
@@ -25,7 +22,7 @@ export default function Phaser({ synth }) {
       setToggle(false);
     } else {
       synth.Phaser.set({
-        wet: e.target.checked,
+        wet: checked,
       });
       synth.chainEffects();
       setToggle(true);
@@ -70,42 +67,26 @@ export default function Phaser({ synth }) {
     <div id="phaser">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
         <Box textColor="custom.900" textAlign="center">Phaser Effect</Box>
-        <Switch mt={1} colorScheme="custom" onChange={handleClick} isChecked={toggle} textAlign="center" />
+        <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Frequency</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={50} onChange={handleFreq}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={50} onChange={handleFreq} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency}</Box>
         </HStack>
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Octaves</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleOctave}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleOctave} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{octaves}</Box>
         </HStack>
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Base Frequency</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={800} onChange={handleBaseFreq}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={800} onChange={handleBaseFreq} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{baseFreq}</Box>
         </HStack>
       </Flex>
     </div>
-
   );
 }

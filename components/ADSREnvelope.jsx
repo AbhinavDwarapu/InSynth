@@ -1,15 +1,12 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-no-bind */
 import {
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Text,
   Flex,
   Box,
   Spacer,
 } from '@chakra-ui/react';
+import EffectSlider from './ui/EffectSlider';
 
 import { useState } from 'react';
 
@@ -67,33 +64,13 @@ export default function ADSREnvelope({ synth }) {
         </Flex>
         <Flex direction="row" flexGrow="1" pb={4}>
           <Spacer />
-          <Slider id="attackslider" colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack}>
-            <SliderTrack bg="custom.100">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider id="attackslider" colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack} />
           <Spacer />
-          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay}>
-            <SliderTrack bg="custom.100">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay} />
           <Spacer />
-          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain}>
-            <SliderTrack bg="custom.100">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain} />
           <Spacer />
-          <Slider colorScheme="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease}>
-            <SliderTrack bg="custom.100">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease} />
           <Spacer />
         </Flex>
         <Flex direction="row" mb={3}>
@@ -110,6 +87,5 @@ export default function ADSREnvelope({ synth }) {
 
       </Flex>
     </div>
-
   );
 }

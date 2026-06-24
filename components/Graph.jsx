@@ -55,10 +55,9 @@ export default function Graph({ synth }) {
       >
         Graph
       </Box>
-      <Skeleton startColor="custom.50" endColor="custom.200" fadeDuration={4} height={190} width={canvasWidth} rounded="lg" isLoaded={!isLoading}>
+      <Skeleton height={190} width={canvasWidth} rounded="lg" loading={!!isLoading}>
         <canvas width={canvasWidth} height={canvasHeight} ref={canvas} />
       </Skeleton>
-
     </Box>
   );
 }

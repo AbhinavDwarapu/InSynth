@@ -1,7 +1,4 @@
-import {
-  Box,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import BitCrusher from './BitCrusher';
 import Chorus from './Chorus';
 import Distortion from './Distortion';
@@ -17,7 +14,7 @@ import Volume from './Volume';
 
 export default function EffectRack({ synth, encoder }) {
   return (
-    <VStack align="stretch" spacing="24px" mb={5}>
+    <VStack align="stretch" gap="24px" mb={5}>
       <Box
         textColor="custom.900"
         fontSize="lg"
@@ -33,7 +30,6 @@ export default function EffectRack({ synth, encoder }) {
       >
         Effect Rack
       </Box>
-
       <Box>
         <Volume synth={synth} encoder={encoder} />
       </Box>

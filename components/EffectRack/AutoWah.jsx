@@ -1,13 +1,10 @@
 import {
-  Switch,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Flex,
   Box,
   HStack,
 } from '@chakra-ui/react';
+import EffectSlider from '../ui/EffectSlider';
+import EffectSwitch from '../ui/EffectSwitch';
 import { useState } from 'react';
 
 export default function AutoWah({ synth }) {
@@ -16,7 +13,7 @@ export default function AutoWah({ synth }) {
   const [octaves, setOctaves] = useState(1);
   const [sensitivity, setSensitivity] = useState(1);
 
-  function handleClick(e) {
+  function handleClick(checked) {
     if (toggle) {
       synth.AutoWah.set({
         wet: 0,
@@ -25,7 +22,7 @@ export default function AutoWah({ synth }) {
       setToggle(false);
     } else {
       synth.AutoWah.set({
-        wet: e.target.checked,
+        wet: checked,
       });
       synth.chainEffects();
       setToggle(true);
@@ -69,42 +66,26 @@ export default function AutoWah({ synth }) {
     <div id="autowah">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
         <Box textColor="custom.900" textAlign="center">AutoWah Effect</Box>
-        <Switch mt={1} colorScheme="custom" onChange={handleClick} isChecked={toggle} textAlign="center" />
+        <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Frequency</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={25} onChange={handleFrequency}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={25} onChange={handleFrequency} />
 
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency}</Box>
         </HStack>
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Octaves</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={10} onChange={handleOctaves}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={10} onChange={handleOctaves} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{octaves}</Box>
         </HStack>
 
         <Box textColor="custom.900" textAlign="left" fontSize="sm">Sensitivity</Box>
         <HStack>
-          <Slider colorScheme="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={-40} min={-40} max={0} onChange={handleSensitivity}>
-            <SliderTrack bg="custom.50">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+          <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={-40} min={-40} max={0} onChange={handleSensitivity} />
           <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{sensitivity}</Box>
         </HStack>
 
       </Flex>
     </div>
-
   );
 }

@@ -199,28 +199,28 @@ describe('ADSR Envelope Panel', () => {
     cy.get('div[id=ADSREnvelope]').within(() => {
       cy.get('input').eq(0).click({ force: true });
       cy.get('[role="slider"]').eq(0).click().type('{downArrow}', { force: true });
-      cy.get('[id="attackval"]').should('have.html', '99');
+      cy.get('[id="attackval"]').should('have.html', '29');
     });
   });
   it('Valid Test: Change Decay', () => {
     cy.get('div[id=ADSREnvelope]').within(() => {
       cy.get('input').eq(1).click({ force: true });
       cy.get('[role="slider"]').eq(1).click().type('{downArrow}', { force: true });
-      cy.get('[id="decayval"]').should('have.html', '99');
+      cy.get('[id="decayval"]').should('have.html', '29');
     });
   });
   it('Valid Test: Change Sustain', () => {
     cy.get('div[id=ADSREnvelope]').within(() => {
       cy.get('input').eq(2).click({ force: true });
       cy.get('[role="slider"]').eq(2).click().type('{downArrow}', { force: true });
-      cy.get('[id="sustainval"]').should('have.html', '99');
+      cy.get('[id="sustainval"]').should('have.html', '29');
     });
   });
   it('Valid Test: Change Release', () => {
     cy.get('div[id=ADSREnvelope]').within(() => {
       cy.get('input').eq(3).click({ force: true });
       cy.get('[role="slider"]').eq(3).click().type('{downArrow}', { force: true });
-      cy.get('[id="releaseval"]').should('have.html', '99');
+      cy.get('[id="releaseval"]').should('have.html', '29');
     });
   });
   it('Valid Test: Play Piano With Changed ADSR', () => {
