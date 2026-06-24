@@ -58,6 +58,11 @@ constructor() {
 
 // Create new synth and initialise effects
 synthInit(synthName) {
+  if (this.synth) {
+    this.synth.releaseAll();
+    this.synth.dispose();
+  }
+
   switch (synthName) {
     case 'AMSynth':
       this.synth = new Tone.PolySynth(Tone.AMSynth);
