@@ -21,6 +21,8 @@ sustain = 0.7;
 
 release = 1;
 
+frequency = 0;
+
 // Effects
 
 AutoWah;
@@ -133,6 +135,7 @@ effectInit() {
 // Trigger synth noteon
 triggerAttackCallback(note, velocity) {
   this.setEffects();
+  this.frequency = Tone.Frequency(note).toFrequency();
   this.synth.triggerAttack(note, '+0', velocity);
 }
 
@@ -145,6 +148,7 @@ triggerReleaseCallback(note) {
 // Trigger synth noteon and noteoff
 triggerAttackReleaseCallback(note, dur) {
   this.setEffects();
+  this.frequency = Tone.Frequency(note).toFrequency();
   this.synth.triggerAttackRelease(note, dur);
 }
 
