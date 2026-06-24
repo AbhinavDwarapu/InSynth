@@ -61,8 +61,8 @@ export default function AboutPage() {
                                               <Box textDecoration="underline" textColor="custom.600" asChild><a
                                                 href="https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess#browser_compatibility">check here
                                                                         </a></Box>). Then plug your midi controller in, (your browser may prompt you to enable
-                                              Midi access). Then select it in the drop down menu in the 'Set
-                                              Controller'panel. You may need to reload the page after plugging in your
+                                              Midi access). Then select it in the drop down menu in the &apos;Set
+                                              Controller&apos;panel. You may need to reload the page after plugging in your
                                               controller.
                                             </Accordion.ItemBody></Accordion.ItemContent>
                   </Accordion.Item>
