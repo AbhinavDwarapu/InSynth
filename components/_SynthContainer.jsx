@@ -72,60 +72,61 @@ export default function SynthContainer({ listenerFailId }) {
       return;
     }
 
-    WebMidi.enable().then(() => {
-      // Initialise Synthesizer
-      const list = [];
-      WebMidi.inputs.forEach((device) => {
-        list.push(device.name);
-      });
-      setInputList(list);
+    WebMidi.enable()
+      .then(() => {
+        // Initialise Synthesizer
+        const list = [];
+        WebMidi.inputs.forEach((device) => {
+          list.push(device.name);
+        });
+        setInputList(list);
 
-      const controller = WebMidi.getInputByName(input);
-      WebSynth.controller = controller;
-      // No controllers
-      if (list.length === 0) {
-        showControllerToast();
-        console.log("No controllers detected");
-        setLoading(false);
-        setSynth(WebSynth);
-        return;
-      }
+        const controller = WebMidi.getInputByName(input);
+        WebSynth.controller = controller;
+        // No controllers
+        if (list.length === 0) {
+          showControllerToast();
+          console.log("No controllers detected");
+          setLoading(false);
+          setSynth(WebSynth);
+          return;
+        }
 
-      if (controller === -1) {
-        showControllerToast();
-        console.log("Synth did not detect controller/channel");
-        setLoading(false);
+        if (controller === -1) {
+          showControllerToast();
+          console.log("Synth did not detect controller/channel");
+          setLoading(false);
+          setSynth(WebSynth);
+          return;
+        }
+        try {
+          controller.channels[channel].addListener("noteon", (e) => {
+            setNote(e.note.identifier);
+            setMidiData(e.data.toString());
+            WebSynth.triggerAttackCallback(e.note.identifier, e.velocity);
+          });
+          controller.channels[channel].addListener("pitchbend", (e) => {
+            setPitchBend(e.value);
+            setMidiData(e.data.toString());
+            WebSynth.setDetuneCallback(e);
+          });
+          controller.channels[channel].addListener("noteoff", (e) => {
+            WebSynth.triggerReleaseCallback(e.note.identifier);
+          });
+          controller.channels[channel].addListener("controlchange", (e) => {
+            setEncoder(e.value);
+            setMidiData(e.data.toString());
+            WebSynth.setVolumeCallback(e);
+          });
+        } catch (e) {
+          showControllerToast();
+          console.log("Controller not found. (Listeners failed)");
+          setLoading(false);
+          setSynth(WebSynth);
+          return;
+        }
         setSynth(WebSynth);
-        return;
-      }
-      try {
-        controller.channels[channel].addListener("noteon", (e) => {
-          setNote(e.note.identifier);
-          setMidiData(e.data.toString());
-          WebSynth.triggerAttackCallback(e.note.identifier, e.velocity);
-        });
-        controller.channels[channel].addListener("pitchbend", (e) => {
-          setPitchBend(e.value);
-          setMidiData(e.data.toString());
-          WebSynth.setDetuneCallback(e);
-        });
-        controller.channels[channel].addListener("noteoff", (e) => {
-          WebSynth.triggerReleaseCallback(e.note.identifier);
-        });
-        controller.channels[channel].addListener("controlchange", (e) => {
-          setEncoder(e.value);
-          setMidiData(e.data.toString());
-          WebSynth.setVolumeCallback(e);
-        });
-      } catch (e) {
-        showControllerToast();
-        console.log("Controller not found. (Listeners failed)");
-        setLoading(false);
-        setSynth(WebSynth);
-        return;
-      }
-      setSynth(WebSynth);
-    })
+      })
       .catch((err) => {
         console.log("Web Midi could not be enabled.", err);
         showControllerToast();
