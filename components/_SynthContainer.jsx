@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { Grid, GridItem, Skeleton, Square } from "@chakra-ui/react";
+import { Box, Flex, Grid, Skeleton } from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import { toaster } from "./ui/toaster";
@@ -11,6 +11,9 @@ import SetController from "./SetController";
 import Graph from "./Graph";
 import ADSREnvelope from "./ADSREnvelope";
 import EffectRack from "./EffectRack/_EffectRack";
+import Panel from "./ui/Panel";
+import Brandmark from "./Brandmark";
+import { ColorModeToggle } from "./ui/color-mode";
 
 import Synthesizer from "../utils/synthesizer";
 import mapKeyToNote from "../utils/keyboardMap";
@@ -149,69 +152,41 @@ export default function SynthContainer({ listenerFailId }) {
   }
 
   return (
-    <Square
+    <Box
       bg="custom.background"
+      minH="100vh"
+      minW={840}
+      display="flex"
       justifyContent="center"
       alignItems="center"
-      height="100vh"
-      minW={840}
-      minH={800}
+      py={10}
     >
       <Skeleton loading={!!isLoading}>
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          templateRows="repeat(3, 1fr)"
-          gap={2}
-        >
-          <GridItem
-            width={256}
-            height={256}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            border="2px"
-            borderColor="custom.100"
+        <Flex direction="column" align="center" gap={4}>
+          <Flex w="788px" align="center" justify="space-between" px={1}>
+            <Brandmark />
+            <ColorModeToggle />
+          </Flex>
+          <Grid
+            templateColumns="repeat(2, 244px) 268px"
+            templateRows="236px 236px 196px"
+            gap={4}
           >
+          <Panel gridColumn="1" gridRow="1">
             <DataPanel
               note={notePlayed}
               pitchbend={pitchBend}
               encoder={encoder}
               midiData={midiData}
             />
-          </GridItem>
-          <GridItem
-            width={256}
-            height={256}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            border="2px"
-            borderColor="custom.100"
-          >
+          </Panel>
+          <Panel gridColumn="2" gridRow="1">
             <SynthSelector synth={synth} />
-          </GridItem>
-          <GridItem
-            overflow="auto"
-            height={785}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            rowSpan={4}
-            colSpan={1}
-            border="2px"
-            borderColor="custom.100"
-          >
+          </Panel>
+          <Panel gridColumn="3" gridRow="1 / span 3">
             <EffectRack synth={synth} encoder={encoder} />
-          </GridItem>
-          <GridItem
-            width={256}
-            height={256}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            border="2px"
-            borderColor="custom.100"
-          >
+          </Panel>
+          <Panel gridColumn="1" gridRow="2">
             <SetController
               inputList={inputList}
               input={input}
@@ -219,32 +194,16 @@ export default function SynthContainer({ listenerFailId }) {
               setInput={setInput}
               setChannel={setChannel}
             />
-          </GridItem>
-          <GridItem
-            width={256}
-            height={256}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            border="2px"
-            borderColor="custom.100"
-          >
+          </Panel>
+          <Panel gridColumn="2" gridRow="2">
             <ADSREnvelope synth={synth} />
-          </GridItem>
-          <GridItem
-            height={256}
-            bg="custom.50"
-            boxShadow="2xl"
-            rounded="2xl"
-            colSpan={2}
-            rowSpan={2}
-            border="2px"
-            borderColor="custom.100"
-          >
+          </Panel>
+          <Panel gridColumn="1 / span 2" gridRow="3">
             <Graph synth={synth} />
-          </GridItem>
-        </Grid>
+          </Panel>
+          </Grid>
+        </Flex>
       </Skeleton>
-    </Square>
+    </Box>
   );
 }

@@ -1,67 +1,59 @@
-import { Grid, GridItem, Stat, Progress, Flex, Box } from '@chakra-ui/react';
+/* eslint-disable react/jsx-props-no-spreading */
+import {
+  Grid, GridItem, Stat, Flex, Box,
+} from '@chakra-ui/react';
+import PanelHeader from './ui/PanelHeader';
 
 export default function DataPanel({
   note, pitchbend, encoder, midiData,
 }) {
-  return (
-    <Flex direction="column" width={256} height={256}>
-      <Box
-        color="custom.900"
-        fontSize="lg"
-        alignItems="center"
-        justifyContent="center"
-        display="flex"
-        height={8}
-        bg="custom.100"
-        roundedBottom="lg"
-        w={210}
-        boxShadow="lg"
-        transform="translate(+22px, 0px)"
-      >
-        Data Panel
-      </Box>
-      <Grid templateColumns="repeat(2, 1fr)" templateRows="repeat(3, 1fr)" m={4} mt={8} ml={8} flexGrow="1">
+  // pitch bend arrives as -1..1; show it as a 0..100% fill.
+  const pbPct = Math.max(0, Math.min(100, Number(((pitchbend * 50) + 50).toFixed(0))));
 
-        <GridItem colStart={1} rowSpan={1} rowStart={1}>
-          <Stat.Root>
-            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{note}</Stat.ValueText>
-            <Stat.Label color="custom.900">Note Played</Stat.Label>
-          </Stat.Root>
-        </GridItem>
-        <GridItem colStart={1} rowSpan={1} rowStart={2}>
-          <Stat.Root>
-            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{(encoder * 100).toFixed(0)}</Stat.ValueText>
-            <Stat.Label color="custom.900">Encoder Value</Stat.Label>
-          </Stat.Root>
-        </GridItem>
-        <GridItem colStart={1} rowSpan={1} rowStart={3}>
-          <Stat.Root>
-            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{midiData}</Stat.ValueText>
-            <Stat.Label color="custom.900">Midi Value</Stat.Label>
-          </Stat.Root>
-        </GridItem>
-        <GridItem colStart={2} rowStart={1} rowEnd={3}>
-          <Stat.Root>
-            <Progress.Root
-              colorPalette="custom"
-              bg="custom.100"
-              transform="rotate(-90deg) translate(-54px, 3.5px) scale(1.35, 1)"
-              height="32px"
-              boxShadow="inner"
-              rounded="base"
-              value={Number(((pitchbend * 50) + 50).toFixed(0))}>
-              <Progress.Track>
-                <Progress.Range />
-              </Progress.Track>
-            </Progress.Root>
-          </Stat.Root>
-        </GridItem>
-        <GridItem colStart={2} rowStart={5} rowEnd={5} position="relative">
-          <Stat.Root>
-            <Stat.Label position="absolute" bottom="2" right="3.5" color="custom.900">Pitch Bend</Stat.Label>
-          </Stat.Root>
-        </GridItem>
-      </Grid>
-    </Flex>
+  const valStyle = {
+    fontFamily: 'heading',
+    color: 'custom.900',
+    bg: 'custom.100',
+    boxShadow: 'inner',
+    textAlign: 'center',
+    rounded: 'md',
+    py: '2px',
+    lineHeight: '1.4',
+  };
+
+  return (
+    <>
+      <PanelHeader>Data Panel</PanelHeader>
+      <Box flex="1" minH="0" px={5} pt={2} pb={3}>
+        <Grid templateColumns="1fr 44px" templateRows="repeat(3, 1fr)" columnGap={3} rowGap={2} h="100%" alignItems="center">
+          <GridItem colStart={1} rowStart={1}>
+            <Stat.Root gap={0}>
+              <Stat.ValueText {...valStyle} fontSize="lg">{note}</Stat.ValueText>
+              <Stat.Label color="custom.900" fontSize="xs">Note Played</Stat.Label>
+            </Stat.Root>
+          </GridItem>
+          <GridItem colStart={1} rowStart={2}>
+            <Stat.Root gap={0}>
+              <Stat.ValueText {...valStyle} fontSize="lg">{(encoder * 100).toFixed(0)}</Stat.ValueText>
+              <Stat.Label color="custom.900" fontSize="xs">Encoder Value</Stat.Label>
+            </Stat.Root>
+          </GridItem>
+          <GridItem colStart={1} rowStart={3}>
+            <Stat.Root gap={0}>
+              <Stat.ValueText {...valStyle} fontSize="md">{midiData}</Stat.ValueText>
+              <Stat.Label color="custom.900" fontSize="xs">Midi Value</Stat.Label>
+            </Stat.Root>
+          </GridItem>
+          <GridItem colStart={2} rowStart={1} rowEnd={4} h="100%">
+            <Flex direction="column" align="center" h="100%" gap={1} py={1}>
+              <Box position="relative" flex="1" w="22px" bg="custom.100" boxShadow="inner" rounded="md" overflow="hidden">
+                <Box position="absolute" bottom="0" left="0" right="0" h={`${pbPct}%`} bg="custom.500" transition="height 0.08s linear" />
+              </Box>
+              <Box as="span" fontSize="xs" color="custom.900" lineHeight="1.4">Bend</Box>
+            </Flex>
+          </GridItem>
+        </Grid>
+      </Box>
+    </>
   );
 }

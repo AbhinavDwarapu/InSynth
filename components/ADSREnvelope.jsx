@@ -1,14 +1,8 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable react/jsx-no-bind */
-import {
-  Text,
-  Flex,
-  Box,
-  Spacer,
-} from '@chakra-ui/react';
-import EffectSlider from './ui/EffectSlider';
+import { Text, Flex, Box, Spacer } from "@chakra-ui/react";
+import EffectSlider from "./ui/EffectSlider";
 
-import { useState } from 'react';
+import { useState } from "react";
+import PanelHeader from "./ui/PanelHeader";
 
 export default function ADSREnvelope({ synth }) {
   const [attackVal, setAttackVal] = useState(30);
@@ -18,74 +12,117 @@ export default function ADSREnvelope({ synth }) {
 
   function getAttack(e) {
     synth.attack = (e / 100).toFixed(2);
-    setAttackVal((e));
+    setAttackVal(e);
   }
   function getDecay(e) {
     synth.decay = (e / 100).toFixed(2);
-    setDecayVal((e));
+    setDecayVal(e);
   }
   function getSustain(e) {
     synth.sustain = (e / 100).toFixed(2);
-    setSustainVal((e));
+    setSustainVal(e);
   }
   function getRelease(e) {
     synth.release = (e / 100).toFixed(2);
     setReleaseVal(e);
   }
 
-  return (
-    <div id="ADSREnvelope">
-      <Flex direction="column" width={256} height={256} flexGrow="1">
-        <Box
-          color="custom.900"
-          fontSize="lg"
-          alignItems="center"
-          justifyContent="center"
-          display="flex"
-          height={8}
-          bg="custom.100"
-          roundedBottom="lg"
-          w={210}
-          boxShadow="lg"
-          transform="translate(+22px, 0px)"
-        >
-          ADSR Envelope
-        </Box>
-        <Flex direction="row" mt={5} mb={3} textAlign="center">
-          <Spacer />
-          <Text color="custom.900" w="20%">Attack</Text>
-          <Spacer />
-          <Text color="custom.900" w="20%">Decay</Text>
-          <Spacer />
-          <Text color="custom.900" w="20%">Sus.</Text>
-          <Spacer />
-          <Text color="custom.900" w="20%">Rel.</Text>
-          <Spacer />
-        </Flex>
-        <Flex direction="row" flexGrow="1" pb={4}>
-          <Spacer />
-          <EffectSlider id="attackslider" colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getAttack} />
-          <Spacer />
-          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getDecay} />
-          <Spacer />
-          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getSustain} />
-          <Spacer />
-          <EffectSlider colorPalette="custom" aria-label="slider-ex-3" defaultValue={30} orientation="vertical" w="20%" onChange={getRelease} />
-          <Spacer />
-        </Flex>
-        <Flex direction="row" mb={3}>
-          <Spacer />
-          <Box id="attackval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
-          <Spacer />
-          <Box id="decayval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
-          <Spacer />
-          <Box id="sustainval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
-          <Spacer />
-          <Box id="releaseval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
-          <Spacer />
-        </Flex>
+  const valBox = {
+    fontFamily: "heading",
+    color: "custom.900",
+    bg: "custom.200",
+    w: "20%",
+    boxShadow: "inner",
+    textAlign: "center",
+    rounded: "md",
+    py: 1,
+  };
 
-      </Flex>
-    </div>
+  return (
+    <>
+      <PanelHeader>ADSR Envelope</PanelHeader>
+      <Box id="ADSREnvelope" flex="1" minH="0">
+        <Flex direction="column" h="100%" pt={3} pb={4} px={2}>
+          <Flex direction="row" textAlign="center" mb={2}>
+            <Spacer />
+            <Text color="custom.900" fontSize="sm" w="20%">
+              Attack
+            </Text>
+            <Spacer />
+            <Text color="custom.900" fontSize="sm" w="20%">
+              Decay
+            </Text>
+            <Spacer />
+            <Text color="custom.900" fontSize="sm" w="20%">
+              Sus.
+            </Text>
+            <Spacer />
+            <Text color="custom.900" fontSize="sm" w="20%">
+              Rel.
+            </Text>
+            <Spacer />
+          </Flex>
+          <Flex direction="row" flexGrow="1" minH="0" pb={3}>
+            <Spacer />
+            <EffectSlider
+              id="attackslider"
+              colorPalette="custom"
+              aria-label="slider-ex-3"
+              defaultValue={30}
+              orientation="vertical"
+              w="20%"
+              onChange={getAttack}
+            />
+            <Spacer />
+            <EffectSlider
+              colorPalette="custom"
+              aria-label="slider-ex-3"
+              defaultValue={30}
+              orientation="vertical"
+              w="20%"
+              onChange={getDecay}
+            />
+            <Spacer />
+            <EffectSlider
+              colorPalette="custom"
+              aria-label="slider-ex-3"
+              defaultValue={30}
+              orientation="vertical"
+              w="20%"
+              onChange={getSustain}
+            />
+            <Spacer />
+            <EffectSlider
+              colorPalette="custom"
+              aria-label="slider-ex-3"
+              defaultValue={30}
+              orientation="vertical"
+              w="20%"
+              onChange={getRelease}
+            />
+            <Spacer />
+          </Flex>
+          <Flex direction="row" align="center">
+            <Spacer />
+            <Box id="attackval" {...valBox}>
+              {attackVal}
+            </Box>
+            <Spacer />
+            <Box id="decayval" {...valBox}>
+              {decayVal}
+            </Box>
+            <Spacer />
+            <Box id="sustainval" {...valBox}>
+              {sustainVal}
+            </Box>
+            <Spacer />
+            <Box id="releaseval" {...valBox}>
+              {releaseVal}
+            </Box>
+            <Spacer />
+          </Flex>
+        </Flex>
+      </Box>
+    </>
   );
 }
