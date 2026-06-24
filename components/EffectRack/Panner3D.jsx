@@ -69,25 +69,25 @@ export default function Panner3D({ synth }) {
   return (
     <div id="panner3d">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">Panner3D Effect</Box>
+        <Box color="custom.900" textAlign="center">Panner3D Effect</Box>
         <EffectSwitch mt={1} colorPalette="custom" textAlign="center" onToggle={handleClick} checked={toggle} />
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">X</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">X</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={-10} max={10} step={0.1} onChange={handleX} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{positionX}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{positionX}</Box>
         </HStack>
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Y</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Y</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={-10} max={10} onChange={handleY} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
             {positionY}
           </Box>
         </HStack>
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Z</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Z</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={-10} max={10} onChange={handleZ} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">
             {positionZ}
           </Box>
         </HStack>

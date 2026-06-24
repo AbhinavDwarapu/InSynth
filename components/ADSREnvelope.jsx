@@ -37,7 +37,7 @@ export default function ADSREnvelope({ synth }) {
     <div id="ADSREnvelope">
       <Flex direction="column" width={256} height={256} flexGrow="1">
         <Box
-          textColor="custom.900"
+          color="custom.900"
           fontSize="lg"
           alignItems="center"
           justifyContent="center"
@@ -53,13 +53,13 @@ export default function ADSREnvelope({ synth }) {
         </Box>
         <Flex direction="row" mt={5} mb={3} textAlign="center">
           <Spacer />
-          <Text textColor="custom.900" w="20%">Attack</Text>
+          <Text color="custom.900" w="20%">Attack</Text>
           <Spacer />
-          <Text textColor="custom.900" w="20%">Decay</Text>
+          <Text color="custom.900" w="20%">Decay</Text>
           <Spacer />
-          <Text textColor="custom.900" w="20%">Sus.</Text>
+          <Text color="custom.900" w="20%">Sus.</Text>
           <Spacer />
-          <Text textColor="custom.900" w="20%">Rel.</Text>
+          <Text color="custom.900" w="20%">Rel.</Text>
           <Spacer />
         </Flex>
         <Flex direction="row" flexGrow="1" pb={4}>
@@ -75,13 +75,13 @@ export default function ADSREnvelope({ synth }) {
         </Flex>
         <Flex direction="row" mb={3}>
           <Spacer />
-          <Box id="attackval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
+          <Box id="attackval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{attackVal}</Box>
           <Spacer />
-          <Box id="decayval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
+          <Box id="decayval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{decayVal}</Box>
           <Spacer />
-          <Box id="sustainval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
+          <Box id="sustainval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{sustainVal}</Box>
           <Spacer />
-          <Box id="releaseval" textColor="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
+          <Box id="releaseval" color="custom.900" bg="custom.200" w="20%" h="95%" boxShadow="inner" textAlign="center" rounded="base">{releaseVal}</Box>
           <Spacer />
         </Flex>
 

@@ -40,7 +40,7 @@ export default function Graph({ synth }) {
   return (
     <Box>
       <Box
-        textColor="custom.900"
+        color="custom.900"
         fontSize="lg"
         alignItems="center"
         justifyContent="center"

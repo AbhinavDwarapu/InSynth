@@ -6,7 +6,7 @@ export default function DataPanel({
   return (
     <Flex direction="column" width={256} height={256}>
       <Box
-        textColor="custom.900"
+        color="custom.900"
         fontSize="lg"
         alignItems="center"
         justifyContent="center"
@@ -24,19 +24,19 @@ export default function DataPanel({
 
         <GridItem colStart={1} rowSpan={1} rowStart={1}>
           <Stat.Root>
-            <Stat.ValueText textColor="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{note}</Stat.ValueText>
+            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{note}</Stat.ValueText>
             <Stat.Label color="custom.900">Note Played</Stat.Label>
           </Stat.Root>
         </GridItem>
         <GridItem colStart={1} rowSpan={1} rowStart={2}>
           <Stat.Root>
-            <Stat.ValueText textColor="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{(encoder * 100).toFixed(0)}</Stat.ValueText>
+            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{(encoder * 100).toFixed(0)}</Stat.ValueText>
             <Stat.Label color="custom.900">Encoder Value</Stat.Label>
           </Stat.Root>
         </GridItem>
         <GridItem colStart={1} rowSpan={1} rowStart={3}>
           <Stat.Root>
-            <Stat.ValueText textColor="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{midiData}</Stat.ValueText>
+            <Stat.ValueText color="custom.900" fontSize="lg" bg="custom.100" boxShadow="inner" textAlign="center" rounded="base">{midiData}</Stat.ValueText>
             <Stat.Label color="custom.900">Midi Value</Stat.Label>
           </Stat.Root>
         </GridItem>

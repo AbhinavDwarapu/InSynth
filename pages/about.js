@@ -58,7 +58,7 @@ export default function AboutPage() {
                     </h2>
                     <Accordion.ItemContent><Accordion.ItemBody>Using a midi controller is relatively straightforward. First, make sure your
                                               browser support the Midi standard (
-                                              <Box textDecoration="underline" textColor="custom.600" asChild><a
+                                              <Box textDecoration="underline" color="custom.600" asChild><a
                                                 href="https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess#browser_compatibility">check here
                                                                         </a></Box>). Then plug your midi controller in, (your browser may prompt you to enable
                                               Midi access). Then select it in the drop down menu in the &apos;Set
@@ -154,7 +154,7 @@ export default function AboutPage() {
                     </h2>
                     <Accordion.ItemContent><Accordion.ItemBody>The source code for this project is currently hosted
                                               {' '}
-                        <Box textDecoration="underline" textColor="custom.600" asChild><a href="https://github.com/Satrumidium/InSynth">here
+                        <Box textDecoration="underline" color="custom.600" asChild><a href="https://github.com/Satrumidium/InSynth">here
                                                   </a></Box>. If you find any bugs or have feature requests, please create a new issue
                                               there. Please keep in mind this is a simple side project so there is no
                                               guarantee your issue will be seen or acted on. If you would like to build this

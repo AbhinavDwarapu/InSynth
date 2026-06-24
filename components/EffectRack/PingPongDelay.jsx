@@ -56,19 +56,19 @@ export default function PingPongDelay({ synth }) {
   return (
     <div id="pingpongdelay">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">PingPong Delay Effect</Box>
+        <Box color="custom.900" textAlign="center">PingPong Delay Effect</Box>
         <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Feedback</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Feedback</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleFeedback} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback}</Box>
         </HStack>
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Delay</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Delay</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleDelay} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
         </HStack>
       </Flex>
     </div>

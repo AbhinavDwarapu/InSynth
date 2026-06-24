@@ -71,18 +71,18 @@ export default function Chebyshev({ synth }) {
   return (
     <div id="chebyshev">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">Chebyshev Effect</Box>
+        <Box color="custom.900" textAlign="center">Chebyshev Effect</Box>
         <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Order</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Order</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={100} onChange={handleOrder} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{order}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{order}</Box>
         </HStack>
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Oversample</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Oversample</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={2} onChange={handleSample} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{overSample}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{overSample}</Box>
         </HStack>
 
       </Flex>

@@ -33,7 +33,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
     <div id="setcontroller">
       <Flex direction="column" width={256} height={256}>
         <Box
-          textColor="custom.900"
+          color="custom.900"
           fontSize="lg"
           alignItems="center"
           justifyContent="center"
@@ -51,7 +51,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
           <GridItem margin="auto" mb={2}>
             <NativeSelect.Root width={56} m="auto">
               <NativeSelect.Field
-                textColor="custom.900"
+                color="custom.900"
                 borderColor="custom.100"
                 colorPalette="custom"
                 placeholder="Select Controller"
@@ -67,7 +67,7 @@ export default function SetController({ setInput, setChannel, inputList }) {
           <GridItem margin="auto" mt={2}>
             <HStack maxW="255px" pl={4} pr={4}>
               <Button colorPalette="custom" onClick={() => setLocalChannel((c) => clamp(c - 1))}>-</Button>
-              <Input textColor="custom.900" borderColor="custom.100" value={channel} onChange={handleType} />
+              <Input color="custom.900" borderColor="custom.100" value={channel} onChange={handleType} />
               <Button colorPalette="custom" onClick={() => setLocalChannel((c) => clamp(c + 1))}>+</Button>
             </HStack>
           </GridItem>

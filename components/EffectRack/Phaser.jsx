@@ -66,25 +66,25 @@ export default function Phaser({ synth }) {
   return (
     <div id="phaser">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">Phaser Effect</Box>
+        <Box color="custom.900" textAlign="center">Phaser Effect</Box>
         <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Frequency</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Frequency</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={50} onChange={handleFreq} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency}</Box>
         </HStack>
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Octaves</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Octaves</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} onChange={handleOctave} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{octaves}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{octaves}</Box>
         </HStack>
 
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Base Frequency</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Base Frequency</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={800} onChange={handleBaseFreq} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{baseFreq}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{baseFreq}</Box>
         </HStack>
       </Flex>
     </div>

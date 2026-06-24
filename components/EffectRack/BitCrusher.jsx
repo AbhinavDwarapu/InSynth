@@ -41,12 +41,12 @@ export default function BitCrusher({ synth }) {
   return (
     <div id="bitcrusher">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">BitCrusher Effect</Box>
+        <Box color="custom.900" textAlign="center">BitCrusher Effect</Box>
         <EffectSwitch mt={1} colorPalette="custom" onToggle={handleClick} checked={toggle} textAlign="center" />
-        <Box textColor="custom.900" textAlign="left" fontSize="sm">Bits</Box>
+        <Box color="custom.900" textAlign="left" fontSize="sm">Bits</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={16} onChange={handleSlider} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{bits}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{bits}</Box>
         </HStack>
 
       </Flex>

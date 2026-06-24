@@ -92,36 +92,36 @@ export default function Chorus({ synth }) {
   return (
     <div id="chorus">
       <Flex direction="column" boxShadow="md" bg="custom.100" rounded="lg" width="90%" display="flex" margin="auto" p={4}>
-        <Box textColor="custom.900" textAlign="center">Chorus Effect</Box>
+        <Box color="custom.900" textAlign="center">Chorus Effect</Box>
         <EffectSwitch id="chorusbtn" mt={1} colorPalette="custom" textAlign="center" onToggle={handleClick} checked={toggle} />
-        <Box textColor="custom.900" fontSize="sm">Frequency</Box>
+        <Box color="custom.900" fontSize="sm">Frequency</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={10} step={0.25} onChange={handleFreq} />
           <Box bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{frequency.toFixed(1)}</Box>
         </HStack>
 
-        <Box textColor="custom.900" fontSize="sm">Delay</Box>
+        <Box color="custom.900" fontSize="sm">Delay</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={1} min={1} max={1000} onChange={handleDelay} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{delay}</Box>
         </HStack>
 
-        <Box textColor="custom.900" fontSize="sm">Depth</Box>
+        <Box color="custom.900" fontSize="sm">Depth</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={1} step={0.05} onChange={handleDepth} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{depth.toFixed(2)}</Box>
         </HStack>
 
-        <Box textColor="custom.900" fontSize="sm">Feedback</Box>
+        <Box color="custom.900" fontSize="sm">Feedback</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={0.95} step={0.05} onChange={handleFeedback} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{feedback.toFixed(2)}</Box>
         </HStack>
 
-        <Box textColor="custom.900" fontSize="sm">Spread</Box>
+        <Box color="custom.900" fontSize="sm">Spread</Box>
         <HStack>
           <EffectSlider colorPalette="custom" aria-label="slider-ex-1" flexGrow="1" defaultValue={0} min={0} max={180} onChange={handleSpread} />
-          <Box textColor="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
+          <Box color="custom.900" bg="custom.200" boxShadow="inner" textAlign="center" rounded="base" width="20%">{spread}</Box>
         </HStack>
 
       </Flex>

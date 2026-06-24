@@ -19,7 +19,7 @@ export default function SynthSelector({
     <div id="synthselector">
       <Flex direction="column" width={256} height={256}>
         <Box
-          textColor="custom.900"
+          color="custom.900"
           fontSize="lg"
           alignItems="center"
           justifyContent="center"

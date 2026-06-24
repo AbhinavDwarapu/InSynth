@@ -16,7 +16,7 @@ export default function EffectRack({ synth, encoder }) {
   return (
     <VStack align="stretch" gap="24px" mb={5}>
       <Box
-        textColor="custom.900"
+        color="custom.900"
         fontSize="lg"
         alignItems="center"
         justifyContent="center"
