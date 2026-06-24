@@ -1,28 +1,28 @@
 /* eslint-disable no-console */
 
-import { Grid, GridItem, Skeleton, Square } from '@chakra-ui/react';
+import { Grid, GridItem, Skeleton, Square } from "@chakra-ui/react";
 
-import React, { useEffect, useState } from 'react';
-import { toaster } from './ui/toaster';
-import { WebMidi } from 'webmidi';
-import SynthSelector from './SynthSelector';
-import DataPanel from './DataPanel';
-import SetController from './SetController';
-import Graph from './Graph';
-import ADSREnvelope from './ADSREnvelope';
-import EffectRack from './EffectRack/_EffectRack';
+import React, { useEffect, useState } from "react";
+import { toaster } from "./ui/toaster";
+import { WebMidi } from "webmidi";
+import SynthSelector from "./SynthSelector";
+import DataPanel from "./DataPanel";
+import SetController from "./SetController";
+import Graph from "./Graph";
+import ADSREnvelope from "./ADSREnvelope";
+import EffectRack from "./EffectRack/_EffectRack";
 
-import Synthesizer from '../utils/synthesizer';
-import mapKeyToNote from '../utils/keyboardMap';
+import Synthesizer from "../utils/synthesizer";
+import mapKeyToNote from "../utils/keyboardMap";
 
 export default function SynthContainer({ listenerFailId }) {
   const lFailId = listenerFailId;
   const [isLoading, setLoading] = useState(false);
-  const [notePlayed, setNote] = useState('N/A');
+  const [notePlayed, setNote] = useState("N/A");
   const [pitchBend, setPitchBend] = useState(0);
-  const [encoder, setEncoder] = useState('0.5');
-  const [midiData, setMidiData] = useState('0,0,0');
-  const [input, setInput] = useState('');
+  const [encoder, setEncoder] = useState("0.5");
+  const [midiData, setMidiData] = useState("0,0,0");
+  const [input, setInput] = useState("");
   const [channel, setChannel] = useState(1);
   const [synth, setSynth] = useState(null);
   const [inputList, setInputList] = useState([]);
@@ -151,39 +151,91 @@ export default function SynthContainer({ listenerFailId }) {
       minH={800}
     >
       <Skeleton loading={!!isLoading}>
-        <Grid templateColumns="repeat(3, 1fr)" templateRows="repeat(3, 1fr)" gap={2}>
-            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-              <DataPanel
-                note={notePlayed}
-                pitchbend={pitchBend}
-                encoder={encoder}
-                midiData={midiData}
-              />
-            </GridItem>
-            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-              <SynthSelector synth={synth} />
-            </GridItem>
-            <GridItem overflow="auto" height={785} bg="custom.50" boxShadow="2xl" rounded="2xl" rowSpan={4} colSpan={1} border="2px" borderColor="custom.100">
-              <EffectRack
-                synth={synth}
-                encoder={encoder}
-              />
-            </GridItem>
-            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-              <SetController
-                inputList={inputList}
-                input={input}
-                channel={channel}
-                setInput={setInput}
-                setChannel={setChannel}
-              />
-            </GridItem>
-            <GridItem width={256} height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" border="2px" borderColor="custom.100">
-              <ADSREnvelope synth={synth} />
-            </GridItem>
-            <GridItem height={256} bg="custom.50" boxShadow="2xl" rounded="2xl" colSpan={2} rowSpan={2} border="2px" borderColor="custom.100">
-              <Graph synth={synth} />
-            </GridItem>
+        <Grid
+          templateColumns="repeat(3, 1fr)"
+          templateRows="repeat(3, 1fr)"
+          gap={2}
+        >
+          <GridItem
+            width={256}
+            height={256}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            border="2px"
+            borderColor="custom.100"
+          >
+            <DataPanel
+              note={notePlayed}
+              pitchbend={pitchBend}
+              encoder={encoder}
+              midiData={midiData}
+            />
+          </GridItem>
+          <GridItem
+            width={256}
+            height={256}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            border="2px"
+            borderColor="custom.100"
+          >
+            <SynthSelector synth={synth} />
+          </GridItem>
+          <GridItem
+            overflow="auto"
+            height={785}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            rowSpan={4}
+            colSpan={1}
+            border="2px"
+            borderColor="custom.100"
+          >
+            <EffectRack synth={synth} encoder={encoder} />
+          </GridItem>
+          <GridItem
+            width={256}
+            height={256}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            border="2px"
+            borderColor="custom.100"
+          >
+            <SetController
+              inputList={inputList}
+              input={input}
+              channel={channel}
+              setInput={setInput}
+              setChannel={setChannel}
+            />
+          </GridItem>
+          <GridItem
+            width={256}
+            height={256}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            border="2px"
+            borderColor="custom.100"
+          >
+            <ADSREnvelope synth={synth} />
+          </GridItem>
+          <GridItem
+            height={256}
+            bg="custom.50"
+            boxShadow="2xl"
+            rounded="2xl"
+            colSpan={2}
+            rowSpan={2}
+            border="2px"
+            borderColor="custom.100"
+          >
+            <Graph synth={synth} />
+          </GridItem>
         </Grid>
       </Skeleton>
     </Square>
