@@ -15,6 +15,7 @@ export default function EffectSlider({
     <Slider.Root
       colorPalette="custom"
       height={vertical ? '100%' : undefined}
+      flexGrow={vertical ? undefined : 1}
       value={value !== undefined ? [value] : undefined}
       defaultValue={defaultValue !== undefined ? [defaultValue] : undefined}
       onValueChange={onChange ? (details) => onChange(details.value[0]) : undefined}
