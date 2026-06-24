@@ -1,7 +1,10 @@
 /* eslint-disable react/jsx-no-bind */
-import { Grid, GridItem, Button, Flex, Box } from '@chakra-ui/react';
+import {
+  Button, Flex, Box, VStack,
+} from '@chakra-ui/react';
 
 import { useState } from 'react';
+import PanelHeader from './ui/PanelHeader';
 
 export default function SynthSelector({
   synth,
@@ -16,34 +19,20 @@ export default function SynthSelector({
   }
 
   return (
-    <div id="synthselector">
-      <Flex direction="column" width={256} height={256}>
-        <Box
-          color="custom.900"
-          fontSize="lg"
-          alignItems="center"
-          justifyContent="center"
-          display="flex"
-          height={8}
-          bg="custom.100"
-          roundedBottom="lg"
-          w={210}
-          boxShadow="lg"
-          transform="translate(+22px, 0px)"
-        >
-          Select Synth
-        </Box>
-        <Grid textAlign="center" flexGrow="1">
-          <GridItem margin="auto">
-            <Button colorPalette="custom" rounded="base" data-active={AMSynth ? '' : undefined} onClick={changeSynth} width={48} margin="auto" mb={1}>
+    <>
+      <PanelHeader>Select Synth</PanelHeader>
+      <Box id="synthselector" flex="1" minH="0">
+        <Flex direction="column" justify="center" align="center" h="100%">
+          <VStack gap={3}>
+            <Button colorPalette="custom" variant={AMSynth ? 'solid' : 'subtle'} rounded="lg" data-active={AMSynth ? '' : undefined} onClick={changeSynth} width={44}>
               AMSynth
             </Button>
-            <Button colorPalette="custom" rounded="base" data-active={!AMSynth ? '' : undefined} onClick={changeSynth} width={48} margin="auto" mt={1}>
+            <Button colorPalette="custom" variant={!AMSynth ? 'solid' : 'subtle'} rounded="lg" data-active={!AMSynth ? '' : undefined} onClick={changeSynth} width={44}>
               FMSynth
             </Button>
-          </GridItem>
-        </Grid>
-      </Flex>
-    </div>
+          </VStack>
+        </Flex>
+      </Box>
+    </>
   );
 }

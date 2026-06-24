@@ -12,6 +12,7 @@ export default function EffectSwitch({
   return (
     <Switch.Root
       colorPalette="custom"
+      alignSelf="center"
       checked={Boolean(checked)}
       disabled={disabled}
       onCheckedChange={onToggle ? (details) => onToggle(details.checked) : undefined}
